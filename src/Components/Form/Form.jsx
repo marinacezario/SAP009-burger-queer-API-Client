@@ -27,7 +27,6 @@ export function Form() {
       })
       .catch(function (error) {        
         const errorMessage = errorHandling(error);
-        console.log(errorMessage);
         setError(errorMessage);      
       });
   };
