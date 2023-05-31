@@ -1,5 +1,10 @@
-export function Input() {
-    return (
-       <input type="text" placeholder="digite aqui"/>
-    )
+export function Input({type, value, onChange, placeholder }) {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
+  );
 }
