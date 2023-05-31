@@ -9,7 +9,9 @@ import { ErrorLabel } from '../ErrorLabel/ErrorLabel';
 export function Form() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
   const [error, setError] = useState('');
+  
   const handleFormSubmit = (event) => {
     event.preventDefault(); 
     console.log('Username:', username);

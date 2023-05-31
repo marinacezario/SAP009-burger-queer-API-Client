@@ -1,5 +1,4 @@
 export function Input({type, value, onChange, placeholder }) {
-    //alt
   return (
     <input
       type={type}
