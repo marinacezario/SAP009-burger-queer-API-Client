@@ -44,7 +44,7 @@ export function Form() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
-      <Button type="submit" text="Enviar" />
+      <Button type="submit" text="Login" />
       <ErrorLabel value={error}/>
     </form>
   );
