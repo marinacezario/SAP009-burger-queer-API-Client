@@ -1,4 +1,4 @@
-export function Input({type, value, onChange, placeholder }) {
+export function Input({type, value, onChange, placeholder}) {
   return (
     <input
       type={type}
