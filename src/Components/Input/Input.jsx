@@ -1,7 +1,8 @@
-export function Input({ value, onChange, placeholder }) {
+export function Input({type, value, onChange, placeholder }) {
+    //alt
   return (
     <input
-      type="text"
+      type={type}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
