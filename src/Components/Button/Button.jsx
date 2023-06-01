@@ -1,7 +1,11 @@
-import styles from './Button.module.css'
-
-export function Button(){
+export function Button({type, text, value, className}) {
     return (
-        <input type="submit" alt="Login Button" value='login' className={styles.btnSend}/>
-    )
-}
+      <input
+        type={type}      
+        text={text}   
+        value={value}   
+        className= {className}
+      />
+    );
+  }
+  

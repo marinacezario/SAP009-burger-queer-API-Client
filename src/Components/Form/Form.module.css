@@ -15,3 +15,14 @@
     font-family: 'Tsukimi Rounded', sans-serif;
     color:#59c9c5
 }
+
+.btnSend {
+    width: 17rem;
+    height: 6rem;
+    border-radius: 25px;
+    background-color: #d1ac60;
+    color: #4D4249;
+    font-family: 'Tsukimi Rounded', sans-serif;
+    font-size: 1.6em;
+    margin-bottom: 4rem;
+}
