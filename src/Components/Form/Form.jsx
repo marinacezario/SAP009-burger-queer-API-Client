@@ -14,9 +14,11 @@ export function Form() {
   
   const [error, setError] = useState('');
   
-  handleFormSubmit(username, password);
+  
+
   return (
-    <form onSubmit={handleFormSubmit} className={styles.form_login}>
+    
+    <form onSubmit={(e) => {handleFormSubmit(username, password); e.preventDefault();}} className={styles.form_login}>
         <h1 className={styles.login_title}>LOGIN</h1>
       <Input
         type="text"
