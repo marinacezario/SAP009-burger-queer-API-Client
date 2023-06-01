@@ -3,8 +3,12 @@
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    width: 80vw;
     align-items: center;
+    margin: 20rem auto;
+    
+ 
+    
 }
 
 .login_title {

@@ -1,4 +1,4 @@
-import'./Input.css';
+import styles from './Input.module.css';
 
 export function Input({type, value, onChange, placeholder}) {
   return (
@@ -7,7 +7,7 @@ export function Input({type, value, onChange, placeholder}) {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className= "inputs"
+      className= {styles.inputs}
     />
   );
 }
