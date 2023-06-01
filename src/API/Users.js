@@ -2,7 +2,7 @@ import {api} from './api';
 import { errorHandling } from '../ErrorHandling';
 
 export const handleFormSubmit = (username, password) => {
-    // event.preventDefault(); 
+
     
     console.log('Username:', username);
     console.log('Password:', password);
