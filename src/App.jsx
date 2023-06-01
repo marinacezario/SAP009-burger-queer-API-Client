@@ -1,12 +1,9 @@
-import { Form } from './Components/Form/Form'
-//import { Header } from './Components/Header/Header'
+
+import { Login } from './Pages/Login/Login'
 
 function App() {
   return (
-    <>
-{/*       <Header /> */}
-      <Form /> 
-    </>
+   <Login />
   )
 }
 

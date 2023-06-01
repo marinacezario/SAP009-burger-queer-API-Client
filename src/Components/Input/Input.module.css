@@ -1,5 +1,6 @@
 .inputs {
     border: none;
+<<<<<<< HEAD
     border-bottom: solid 5px #59c9c5;
     background: #4B4447;
     height: 50px;
@@ -12,5 +13,19 @@
 
 .inputs::placeholder {
     font-size: 30px;
+=======
+    border-bottom: solid .5rem #59c9c5;
+    background: #4B4447;
+    height: 5rem;
+    margin-bottom: 10vh;
+    font-size: 2.6rem;
+    color: white;
+    width: 80%;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.inputs::placeholder {
+    font-size: 2.6rem;
+>>>>>>> 28aeaa48629483fd84d757c87db0dd87333f2a16
     color:#59c9c5
 }

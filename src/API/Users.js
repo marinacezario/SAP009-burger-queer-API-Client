@@ -1,8 +1,9 @@
-import { api } from './API';
+import {api} from './api';
 import { errorHandling } from '../ErrorHandling';
 
 export const handleFormSubmit = (username, password) => {
 
+    
     console.log('Username:', username);
     console.log('Password:', password);
     
@@ -17,6 +18,6 @@ export const handleFormSubmit = (username, password) => {
       .catch(function (error) {        
         const errorMessage = errorHandling(error);
         console.log(errorMessage)
-        //setError(errorMessage);      
+    //    setError(errorMessage);      
       });
-}
+  };

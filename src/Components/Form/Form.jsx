@@ -1,20 +1,24 @@
 import { useState } from 'react';
+
 import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
-//import { ErrorLabel } from '../ErrorLabel/ErrorLabel';
+import { errorHandling } from '../../ErrorHandling';
+import { ErrorLabel } from '../ErrorLabel/ErrorLabel';
 import styles from './Form.module.css';
-import { handleFormSubmit } from '../../API/Users'
-
+//import stylesB from './Button.module.css';
+import { handleFormSubmit } from '../../API/Users';
 
 export function Form() {
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
-/*   const [error, setError] = useState(''); */
-    const handleLogin = handleFormSubmit(username, password) 
+  const [error, setError] = useState('');
+  
+  
+
   return (
-    <form onSubmit={handleFormSubmit(username, password)} className={styles.form_login}>
+    
+    <form onSubmit={(e) => {handleFormSubmit(username, password); e.preventDefault();}} className={styles.form_login}>
         <h1 className={styles.login_title}>LOGIN</h1>
       <Input
         type="text"
@@ -28,8 +32,8 @@ export function Form() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
-      <Button type="submit" text="login" className="submit_btn" />
-{/*       <ErrorLabel value={error}/> */}
+      <Button type="submit" text="login" value="login" className={styles.btnSend} />
+      <ErrorLabel value={error}/>
     </form>
   );
 }
