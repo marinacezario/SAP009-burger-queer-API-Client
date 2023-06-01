@@ -1,11 +1,11 @@
 export function Button({type, text, value, className}) {
     return (
-      <input
+      <button
         type={type}      
         text={text}   
         value={value}   
         className= {className}
-      />
+      >{text}</button>
     );
   }
   
