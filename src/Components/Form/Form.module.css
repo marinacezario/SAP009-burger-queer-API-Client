@@ -1,0 +1,16 @@
+.form_login {
+    background: #4B4447;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-items: center;
+    margin: 20rem auto;
+}
+
+.login_title {
+    font-family: 'Tsukimi Rounded', sans-serif;
+    color:#59c9c5
+}
+
+

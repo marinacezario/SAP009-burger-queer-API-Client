@@ -1,0 +1,16 @@
+.inputs {
+    border: none;
+    border-bottom: solid 5px #59c9c5;
+    background: #4B4447;
+    height: 50px;
+    margin-bottom: 15vh;
+    font-size: 30px;
+    color: white;
+    width: 40vw;
+    font-family: 'Tsukimi Rounded', sans-serif;
+}
+
+.inputs::placeholder {
+    font-size: 30px;
+    color:#59c9c5
+}
