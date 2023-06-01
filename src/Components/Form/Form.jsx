@@ -5,6 +5,7 @@ import { Button } from '../Button/Button';
 import api from '../../api';
 import { errorHandling } from '../../ErrorHandling';
 import { ErrorLabel } from '../ErrorLabel/ErrorLabel';
+import './Form.css'
 
 export function Form() {
   const [username, setUsername] = useState('');
@@ -32,7 +33,8 @@ export function Form() {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className="form_login">
+        <h1 className={"login_title"}>LOGIN</h1>
       <Input
         type="text"
         placeholder="Nome de usuário"

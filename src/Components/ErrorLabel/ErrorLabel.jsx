@@ -1,7 +1,9 @@
+import './ErrorLabel.css';
+
 export function ErrorLabel({ value }) {
     console.log(value);
     return (
-      <label>{value}</label>
+      <label className='error_label'>{value}</label>
     );
   }
   

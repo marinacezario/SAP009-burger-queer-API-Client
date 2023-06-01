@@ -1,4 +1,11 @@
 .btnSend {
-    background-color: coral;
-    color: #ffffff;
-}
+
+        width: 220px;
+        height: 80px;
+        border-radius: 25px;
+        background: #d1ac60;
+        color: #4D4249;
+        font-family: 'Tsukimi Rounded', sans-serif;
+        font-size: 30px;
+        margin-bottom: 40px;
+    }

@@ -1,3 +1,5 @@
+import'./Input.css';
+
 export function Input({type, value, onChange, placeholder}) {
   return (
     <input
@@ -5,6 +7,7 @@ export function Input({type, value, onChange, placeholder}) {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      className= "inputs"
     />
   );
 }
