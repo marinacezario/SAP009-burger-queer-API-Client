@@ -1,5 +1,5 @@
 import {api} from './api';
-import { errorHandling } from '../ErrorHandling';
+import { errorHandling } from '../error-handling';
 
 export const handleFormSubmit = (username, password) => {
 

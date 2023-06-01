@@ -31,8 +31,4 @@ export function errorHandling (error){
       }
       console.log("error.config");
       console.error(error.config);
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 28aeaa48629483fd84d757c87db0dd87333f2a16

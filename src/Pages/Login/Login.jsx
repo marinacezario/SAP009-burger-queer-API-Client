@@ -4,8 +4,8 @@ import { Header } from '../../Components/Header/Header'
 export function Login(){
     return (
         <>
-        <Header />
-        <Form /> 
+            <Header />
+            <Form /> 
         </>
     )
 }

@@ -2,11 +2,10 @@ import { useState } from 'react';
 
 import { Input } from '../Input/Input';
 import { Button } from '../Button/Button';
-import { errorHandling } from '../../ErrorHandling';
+import { errorHandling } from '../../error-handling';
 import { ErrorLabel } from '../ErrorLabel/ErrorLabel';
 import styles from './Form.module.css';
-//import stylesB from './Button.module.css';
-import { handleFormSubmit } from '../../API/Users';
+import { handleFormSubmit } from '../../api/users';
 
 export function Form() {
   const [username, setUsername] = useState('');
