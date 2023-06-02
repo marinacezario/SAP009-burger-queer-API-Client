@@ -1,4 +1,4 @@
-.form_login {
+.login_form {
     background: #4B4447;
     border-radius: 25px;
     display: flex;
@@ -6,17 +6,14 @@
     width: 80vw;
     align-items: center;
     margin: 20rem auto;
-    
- 
-    
 }
 
 .login_title {
     font-family: 'Tsukimi Rounded', sans-serif;
-    color:#59c9c5
+    color:#59c9c5;
 }
 
-.btnSend {
+.send_btn {
     width: 17rem;
     height: 6rem;
     border-radius: 25px;
