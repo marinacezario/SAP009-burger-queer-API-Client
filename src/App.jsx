@@ -1,10 +1,7 @@
+import { Login } from './Pages/Login/Login';
 
-import { Login } from './Pages/Login/Login'
-
-function App() {
+export function App() {
   return (
    <Login />
   )
 }
-
-export default App

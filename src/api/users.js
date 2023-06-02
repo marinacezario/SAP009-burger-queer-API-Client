@@ -1,23 +1,21 @@
-import {api} from './api';
-import { errorHandling } from '../error-handling';
+import { api } from './api';
+import { errorHandler } from '../error-handler';
 
-export const handleFormSubmit = (username, password) => {
-
+export const handleSubmitForm = (email, password) => {
+  
+  console.log('Email:', email);
+  console.log('Password:', password);
     
-    console.log('Username:', username);
-    console.log('Password:', password);
-    
-    api.post('/login', {
-      email: username,
-      password: password
+  api.post('/login', {
+    email: email,
+    password: password
+  })
+    .then(function (response) {
+      console.log(response);
     })
-      .then(function (response) {
-        console.log(response);
-        
-      })
-      .catch(function (error) {        
-        const errorMessage = errorHandling(error);
-        console.log(errorMessage)
-    //    setError(errorMessage);      
-      });
-  };
+    .catch(function (error) {        
+      const errorMessage = errorHandler(error);
+      console.log(errorMessage)
+      //    setError(errorMessage);      
+    });
+};
