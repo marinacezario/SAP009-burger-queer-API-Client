@@ -1,7 +1,10 @@
-import { Login } from './Pages/Login/Login';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './Router';
 
 export function App() {
   return (
-   <Login />
-  )
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  );
 }
