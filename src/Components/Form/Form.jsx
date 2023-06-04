@@ -1,28 +1,43 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-//components
-import { Input } from '../Input/Input';
-import { Button } from '../Button/Button';
+// components
+import { Input } from "../Input/Input";
+import { Button } from "../Button/Button";
+import { ErrorLabel } from "../ErrorLabel/ErrorLabel";
+import { handleSubmitForm } from "../../api/users";
 
-
-import { ErrorLabel } from '../ErrorLabel/ErrorLabel';
-import { handleSubmitForm } from '../../api/users';
-
-//styles
-import styles from './Form.module.css';
-
-
-
-
+// styles
+import styles from "./Form.module.css";
 
 export function Form() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
-  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSubmitForm(email, password)
+      .then((response) => {
+        // console.log(email);
+        // console.log(password);
+        const userDataRole = response.role;
+
+        if (userDataRole === "admin") {
+          navigate("/new-order");
+        } else if (userDataRole === "waiter") {
+          navigate("/current-orders");
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
 
   return (
-    <form onSubmit={(e) => {handleSubmitForm(email, password); e.preventDefault();}} className={styles.login_form}>
+    <form onSubmit={handleSubmit} className={styles.login_form}>
       <h1 className={styles.login_title}>LOGIN</h1>
       <Input
         type="email"
@@ -36,8 +51,14 @@ export function Form() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
-      <Button type="submit" text="login" value="login" className={styles.send_btn} />
-      <ErrorLabel value={error}/>
+      <Button
+        id="submit-button"
+        type="submit"
+        text="login"
+        value="login"
+        className={styles.send_btn}
+      />
+      <ErrorLabel value={error} />
     </form>
   );
 }
