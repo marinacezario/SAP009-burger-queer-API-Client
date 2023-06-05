@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Button } from './Button';
-import '@testing-library/jest-dom'; // Importe esta linha
+import '@testing-library/jest-dom'; 
 
 describe('Button component', () => {
   test('renders without crashing', () => {

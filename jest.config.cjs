@@ -1,4 +1,4 @@
-const { JSDOM } = require('jsdom');
+// const { JSDOM } = require('jsdom');
 
 module.exports = {
   moduleFileExtensions: ['js', 'jsx'],
