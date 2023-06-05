@@ -1,10 +1,11 @@
-import { Header } from '../../Components/Header/Header'
+import React from 'react';
+import { Header } from '../../Components/Header/Header';
 
 export function CurrentOrders (){
     return (
         <>
-        <Header />
-        <h1>Current Orders</h1>
+            <Header />
+            <h1>Current Orders</h1>
         </>
     )
 }

@@ -1,15 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-//pages
-import { Login } from './Pages/Login/Login';
-import { NewOrder } from './Pages/NewOrder/NewOrder'
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './Router';
 
 export function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login/>} />
-        <Route path="/new-order" element={<NewOrder/>} />
-      </Routes>
+      <Router />
     </BrowserRouter>
-  )
+  );
 }

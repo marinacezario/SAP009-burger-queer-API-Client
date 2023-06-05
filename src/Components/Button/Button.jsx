@@ -1,16 +1,15 @@
-import { Link } from 'react-router-dom'
+import React from 'react';
 
-export function Button({text, type, alt, value, className, path}) {
+export const Button = ({ id, text, type, alt, value, className }) => {
   return (
-    <>
-      <Link to={path}>
-        <button 
-          type={type} 
-          alt={alt} 
-          value={value} 
-          className={className}
-        >{text}</button>
-      </Link>
-    </>
-  )
-}
+    <button
+      id={id}
+      type={type}
+      aria-label={alt} // Usando a propriedade aria-label em vez de alt
+      value={value}
+      className={className}
+    >
+      {text}
+    </button>
+  );
+};
