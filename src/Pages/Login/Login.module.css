@@ -1,0 +1,21 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_logo {
+    width: 200px;
+    
+}
+
+@media screen and (min-width: 1000px) {
+    .login {
+        flex-direction: row;
+        margin: 15vh 10vh;
+        justify-content: space-between;
+    }
+    .main_logo {
+        width: 400px;
+    }
+}

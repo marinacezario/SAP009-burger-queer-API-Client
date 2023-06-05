@@ -1,6 +1,10 @@
-.header_mobile {
+.header_login {
     background-color: #D1AC60;
-    color: white;
     width: 100vw;
     height: 10vh;
+}
+
+.logo_header {
+    width: 350px;
+    height: 8vh;
 }
