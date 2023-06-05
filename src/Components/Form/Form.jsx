@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import { ErrorLabel } from "../ErrorLabel/ErrorLabel";
-import { handleSubmitForm } from "../../api/users";
+import { handleSubmitForm } from "../../API/users";
 
 // styles
 import styles from "./Form.module.css";

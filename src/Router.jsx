@@ -8,7 +8,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/new-order" element={<NewOrder />} />
-      <Route path="/current-order" element={<CurrentOrders />} />
+      <Route path="/current-orders" element={<CurrentOrders />} />
     </Routes>
   );
 }
