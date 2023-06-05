@@ -31,7 +31,7 @@ export function Form() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
-      <Button type="submit" text="login" value="login" className={styles.send_btn} />
+      <Button type="submit" text="login" value="login" className={styles.send_btn} path="/new-order"/>
       <ErrorLabel value={error}/>
     </form>
   );

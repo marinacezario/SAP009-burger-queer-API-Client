@@ -1,10 +1,16 @@
-export function Button({text, type, alt, value, className}) {
+import { Link } from 'react-router-dom'
+
+export function Button({text, type, alt, value, className, path}) {
   return (
-    <button 
-      type={type} 
-      alt={alt} 
-      value={value} 
-      className={className}
-    >{text}</button>
+    <>
+      <Link to={path}>
+        <button 
+          type={type} 
+          alt={alt} 
+          value={value} 
+          className={className}
+        >{text}</button>
+      </Link>
+    </>
   )
 }
