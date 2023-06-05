@@ -2,7 +2,7 @@
 import { Form } from '../../Components/Form/Form';
 import { Header } from '../../Components/Header/Header';
 //images
-import logo from 'logo.png';
+import logo from '../../assets/img/logo.png';
 //styles
 import styles from './Login.module.css'
 
