@@ -15,9 +15,8 @@ export const handleSubmitForm = (email, password) => {
    //   console.log(response.data.user)
       return response.data.user;
     })
-    .catch(function (error) {        
-      const errorMessage = errorHandler(error);
-      console.log(errorMessage)
-      // setError(errorMessage);      
+    .catch(function (error) {    
+    //  console.log(error)    
+    throw error;
     });
 };

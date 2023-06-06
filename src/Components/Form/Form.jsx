@@ -9,6 +9,7 @@ import { handleSubmitForm } from "../../API/users";
 
 // styles
 import styles from "./Form.module.css";
+import { errorHandler } from "../../error-handler";
 
 export function Form() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(error);
     handleSubmitForm(email, password)
       .then((response) => {
         // console.log(email);
@@ -32,7 +34,8 @@ export function Form() {
         }
       })
       .catch((error) => {
-        setError(error.message);
+       const errorMessage = errorHandler(error);
+       setError(errorMessage);
       });
   };
 
