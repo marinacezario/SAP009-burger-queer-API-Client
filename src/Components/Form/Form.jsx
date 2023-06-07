@@ -24,7 +24,7 @@ export function Form() {
     handleSubmitForm(email, password)
       .then((response) => {
         // console.log(email);
-        // console.log(password);
+         console.log(response);
         const userDataRole = response.role;
 
         if (userDataRole === "admin") {
@@ -47,12 +47,14 @@ export function Form() {
         placeholder="Email"
         value={email}
         onChange={(event) => setEmail(event.target.value)}
+        data-testid="email-input"
       />
       <Input
         type="password"
         placeholder="Senha"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
+        data-testid="password-input"
       />
       <Button
         id="submit-button"
@@ -60,6 +62,7 @@ export function Form() {
         text="login"
         value="login"
         className={styles.send_btn}
+        data-testid="submit-button"
       />
       <ErrorLabel value={error} />
     </form>
