@@ -40,9 +40,10 @@ export function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.login_form}>
+    <form onSubmit={handleSubmit} className={styles.login_form} data-testid="form">
       <h1 className={styles.login_title}>LOGIN</h1>
       <Input
+      id="email-input"
         type="email"
         placeholder="Email"
         value={email}
