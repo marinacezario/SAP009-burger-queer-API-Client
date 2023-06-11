@@ -8,7 +8,7 @@ export const handleSubmitForm = (email, password) => {
   })
     .then(function (response) {
    
-      return response.data.user;
+      return response;
     })
     .catch(function (error) {    
     
