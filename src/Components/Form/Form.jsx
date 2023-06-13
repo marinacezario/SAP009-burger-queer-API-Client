@@ -19,6 +19,24 @@ export function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email) {
+      setError("Please enter your email.");
+      return;
+    }else if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+  
+    if (!password) {
+      setError("Please enter your password.");
+      return;
+    } else if (password.length < 6) {
+      setError("Password should have at least 6 characters.");
+      return;
+    }
+
     handleSubmitForm(email, password)
       .then((response) => {
         // console.log(email);
