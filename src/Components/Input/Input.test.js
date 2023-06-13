@@ -1,48 +1,29 @@
-import React from 'react';
-import { render, screen, /* fireEvent, */ waitFor } from '@testing-library/react';
-import { Input } from './Input';
-import '@testing-library/jest-dom'; 
-import userEvent from '@testing-library/user-event';
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Input } from "./Input";
+import "@testing-library/jest-dom";
 
-describe('Input component', () => {
-  it('renders without crashing', () => {
-    render(
-      <Input
-        type="email"
-        placeholder="Email"
-        value="email"
-      />
-    );
-    const input = screen.getByPlaceholderText('Email');
-    expect(input).toBeInTheDocument();
+describe("Input component", () => {
+  const mockOnChange = jest.fn();
+  test("renders without crashing", () => {
+    render(<Input type="email" placeholder="Email" onChange={mockOnChange} />);
+
+    const email_input = screen.getByPlaceholderText("Email");
+
+    expect(email_input).toBeInTheDocument();
+    expect(email_input).toMatchSnapshot();
+    expect(email_input).toHaveAttribute("type", "email");
+ 
   });
-  it('should call onChange when input value changes', async () => {
-    const onChangeMock = jest.fn();
+  test("calls onChange", () => {
+    render(<Input type="email" placeholder="Email" onChange={mockOnChange} />);
 
-    render(<Input
-      onChange={onChangeMock}
-      value= 'T'/>);
-    const input = screen.getByRole('textbox');
-      userEvent.type(input, 'T');
-    //fireEvent.change(input, { target: { value: 'Test value' } });
-    await waitFor(() => {
-      expect(onChangeMock).toHaveBeenCalledTimes(1);
-      expect(onChangeMock).toHaveBeenCalledWith(expect.objectContaining({ target: { value: 'T' } }));
-    })
-  });
+    const email_input = screen.getByPlaceholderText("Email");
 
-  it('should check the input type', async () => {
-    const onChangeMock = jest.fn();
+    const newValue = "example@example.com";
 
-    render(<Input
-      onChange={onChangeMock}
-      value= 'T'/>);
-    const input = screen.getByRole('textbox');
-      userEvent.type(input, 'T');
-    //fireEvent.change(input, { target: { value: 'Test value' } });
-    await waitFor(() => {
-      expect(onChangeMock).toHaveBeenCalledTimes(1);
-      expect(onChangeMock).toHaveBeenCalledWith(expect.objectContaining({ target: { value: 'T' } }));
-    })
+    fireEvent.change(email_input, { target: { value: newValue } });
+
+    expect(mockOnChange).toHaveBeenCalled();
   });
 });

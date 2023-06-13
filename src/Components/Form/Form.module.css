@@ -8,8 +8,7 @@
 }
 
 .login_title {
-    font-family: 'Tsukimi Rounded', sans-serif;
-    color:#59c9c5;
+    color: white;
 }
 
 .send_btn {
@@ -17,8 +16,7 @@
     height: 6rem;
     border-radius: 25px;
     background-color: #d1ac60;
-    color: #4D4249;
-    font-family: 'Tsukimi Rounded', sans-serif;
+    color: black;
     font-size: 1.6em;
     margin-bottom: 4rem;
 }
