@@ -39,8 +39,6 @@ export function Form() {
 
     handleSubmitForm(email, password)
       .then((response) => {
-        // console.log(email);
-        // console.log(password);
         const userDataRole = response.role;
 
         if (userDataRole === "admin") {
