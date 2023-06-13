@@ -5,7 +5,7 @@ export const Button = ({ id, text, type, alt, value, className }) => {
     <button
       id={id}
       type={type}
-      aria-label={alt} // Usando a propriedade aria-label em vez de alt
+      aria-label={alt} 
       value={value}
       className={className}
     >

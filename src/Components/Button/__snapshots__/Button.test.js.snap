@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component renders without crashing 1`] = `
+<button
+  id="submit-button"
+  type="submit"
+  value="login"
+>
+  login
+</button>
+`;
