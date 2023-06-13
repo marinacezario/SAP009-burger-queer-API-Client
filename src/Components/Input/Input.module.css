@@ -1,16 +1,15 @@
 .inputs {
     border: none;
-    border-bottom: solid .5rem #59c9c5;
+    border-bottom: solid .5rem white;
     background: #4B4447;
     height: 5rem;
     margin-bottom: 10vh;
     font-size: 2.6rem;
     color: white;
     width: 80%;
-    font-family: 'PT Sans', sans-serif;
 }
 
 .inputs::placeholder {
     font-size: 2.6rem;
-    color:#59c9c5
+    color:white;
 }
