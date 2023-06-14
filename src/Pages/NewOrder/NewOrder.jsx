@@ -1,11 +1,16 @@
-import React from 'react';
-import { Header } from '../../Components/Header/Header'
+import React from "react";
 
-export function NewOrder (){
-    return (
-        <>
-        <Header />
-        <h1>New Order</h1>
-        </>
-    )
+//components
+import { Header } from "../../Components/Header/Header";
+import { Menu } from "../../Components/Menu/Menu";
+
+export function NewOrder() {
+  return (
+    <>
+      <Header />
+      <div>
+        <Menu />
+      </div>
+    </>
+  );
 }
