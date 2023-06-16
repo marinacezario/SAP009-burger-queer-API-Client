@@ -1,25 +1,27 @@
-.login_form {
+.order_form {
     background: #4B4447;
-    border-radius: 25px;
+    border-radius: 15px;
+    width: 80vw;
     display: flex;
     flex-direction: column;
-    width: 80vw;
     align-items: center;
 }
 
-.login_title {
-    color: white;
+.client_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .inputs {
     border: none;
     border-bottom: solid .5rem white;
-    background: #4B4447;
+    background: none;
     height: 5rem;
-    margin-bottom: 10vh;
+    margin: 2vh;
     font-size: 2.6rem;
     color: white;
-    width: 80%;
+    width: 70%;
 }
 
 .inputs::placeholder {
@@ -27,18 +29,26 @@
     color:white;
 }
 
-.send_btn {
-    width: 19rem;
-    height: 6rem;
+.client_name_text {
+    font-size: 2.6rem;
+    color: white;
+    margin: 2vh;
+    width: 70%;
+}
+
+.order_btn {
+    width: 14rem;
+    height: 5rem;
     border-radius: 15px;
     background-color: #d1ac60;
     color: black;
-    font-size: 1.6em;
-    margin-bottom: 4rem;
+    font-size: 1.2em;
+    margin: 2vh;
 }
 
+
 @media screen and (min-width: 1000px) {
-    .login_form {
+    .order_form {
         width: 40vw
     }
 }

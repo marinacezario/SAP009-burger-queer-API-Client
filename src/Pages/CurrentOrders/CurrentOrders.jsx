@@ -4,7 +4,7 @@ import { Header } from '../../Components/Header/Header';
 export function CurrentOrders (){
     return (
         <>
-            <Header />
+            <Header showButton />
             <h1>Current Orders</h1>
         </>
     )

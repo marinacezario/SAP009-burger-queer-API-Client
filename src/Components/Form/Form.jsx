@@ -74,6 +74,7 @@ export function Form() {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         data-testid="email-input"
+        className={styles.inputs}
       />
       <Input
         type="password"
@@ -81,15 +82,17 @@ export function Form() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
         data-testid="password-input"
+        className={styles.inputs}
       />
       <Button
         id="submit-button"
         type="submit"
-        text="login"
         value="login"
         className={styles.send_btn}
         data-testid="submit-button"
-      />
+      >
+        login
+      </Button>
       {error !== null && <ErrorLabel value={error} />}{" "}
     </form>
   );
