@@ -6,13 +6,12 @@ const getToken = getItem("token");
 export const handleShowMenu = () => {
     return api
     .get('/products', {
-      headers: {
-        Authorization: `Bearer ${getToken}`
+        headers: {
+          Authorization: `Bearer ${getToken}`}
       }
-    })
+    )
     .then((response) => {
-        console.log("menu", response.data)
-      return response.data;
+      return response;
     })
     .catch((error) => {
       throw error;
