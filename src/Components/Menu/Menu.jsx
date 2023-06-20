@@ -7,16 +7,15 @@ import { Button } from "../../Components/Button/Button";
 //styles
 import styles from "./Menu.module.css";
 
-export function Menu() {
+export function Menu(clickHandler) {
   const [activeButton, setActiveButton] = useState(null);
   const [products, setProducts] = useState([]);
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
-    console.log("botão funcionou")
     handleShowMenu()
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         setProducts(response.data)
       })
       .catch((error) => {
@@ -25,7 +24,6 @@ export function Menu() {
   };
 
   const filteredProducts = products.filter((item) => item.type === activeButton);
-  console.log(filteredProducts);
 
   return (
     <>
@@ -47,9 +45,16 @@ export function Menu() {
         data-testid="diner-button"
         onClick={() => handleButtonClick("Diner")}
       />
-      <ul>
+      <ul className={styles.menu_list}>
         {filteredProducts.map((product) => (
-          <li key={product.id}>{product.name}</li>
+          <li className={styles.menu_products} key={product.id}>
+            <button
+              className={styles.menu_products}
+              onClick={clickHandler} //clickHandler é props e deve ser passado no pai 
+            >
+              {product.name} R${product.price}
+            </button>
+          </li>
         ))}
       </ul>
     </>
