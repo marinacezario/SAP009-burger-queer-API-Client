@@ -1,0 +1,24 @@
+.menu_btn {
+    width: 19rem;
+    height: 6rem;
+    border-radius: 15px;
+    background-color: #d1ac60;
+    color: black;
+    font-size: 1.6em;
+    margin-bottom: 4rem;
+}
+.menu_btn :active {
+    background-color: #59C9C5;
+}
+.menu_list {
+    display: grid;
+}
+.menu_products {
+    width: 19rem;
+    height: 6rem;
+    border-radius: 15px;
+    background-color: #d1ac60;
+    color: black;
+    font-size: 1em;
+    margin-bottom: 4rem;
+}

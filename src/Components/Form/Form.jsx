@@ -49,9 +49,9 @@ export function Form() {
         const userDataRole = response.data.user.role;
 
         if (userDataRole === "admin") {
-          navigate("/new-order");
+          navigate("/admin");
         } else if (userDataRole === "waiter") {
-          navigate("/current-orders");
+          navigate("/new-order");
         }
       })
       .catch((error) => {
