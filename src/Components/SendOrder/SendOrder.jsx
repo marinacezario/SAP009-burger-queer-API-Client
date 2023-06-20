@@ -72,6 +72,7 @@ export function SendOrder (){
                    </div> 
                 )}
             </div>
+            <></>
             <Button
                 id="submit-button"
                 type="submit"
