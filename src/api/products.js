@@ -1,14 +1,19 @@
-import { api } from './api';
+import { api } from "./api";
+import { getItem } from "../storage/localStorage";
 
-export const handleShowMenu = (email, password) => {
-    
-  return api.get('/products')
-    .then(function (response) {
-   
+const getToken = getItem("token");
+
+export const handleShowMenu = () => {
+    return api
+    .get('/products', {
+        headers: {
+          Authorization: `Bearer ${getToken}`}
+      }
+    )
+    .then((response) => {
       return response;
     })
-    .catch(function (error) {    
-    
-    throw error;
+    .catch((error) => {
+      throw error;
     });
 };

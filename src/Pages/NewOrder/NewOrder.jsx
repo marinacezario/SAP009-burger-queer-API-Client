@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Header } from '../../Components/Header/Header'
+import { Header } from '../../Components/Header/Header';
+import { Menu } from "../../Components/Menu/Menu";
 import { SendOrder } from '../../Components/SendOrder/SendOrder';
 
 import styles from "./NewOrder.module.css"
@@ -10,7 +11,8 @@ export function NewOrder (){
         <>
         <Header showButton />
         <div className={styles.new_order}>
-            <SendOrder />
+          <Menu />
+          <SendOrder />
         </div>
         </>
     )
