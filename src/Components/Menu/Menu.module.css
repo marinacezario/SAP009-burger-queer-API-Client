@@ -1,3 +1,7 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+}
 .menu_btn {
     width: 19rem;
     height: 6rem;
@@ -5,13 +9,18 @@
     background-color: #d1ac60;
     color: black;
     font-size: 1.6em;
-    margin-bottom: 4rem;
+    margin: 4rem;
 }
-.menu_btn :active {
+.menu_btn:active {
     background-color: #59C9C5;
 }
 .menu_list {
-    display: grid;
+    list-style: none;
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
 }
 .menu_products {
     width: 19rem;
@@ -20,5 +29,4 @@
     background-color: #d1ac60;
     color: black;
     font-size: 1em;
-    margin-bottom: 4rem;
 }

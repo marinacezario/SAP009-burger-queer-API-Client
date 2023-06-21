@@ -5,7 +5,7 @@ import { Button } from "../Button/Button";
 
 import styles from "./SendOrder.module.css"
 
-export function SendOrder (){
+export function SendOrder ({renderSelectedProducts}){
 
     const [name, setName] = useState("");
     const [showName, setShowName] = useState(false);
@@ -72,7 +72,15 @@ export function SendOrder (){
                    </div> 
                 )}
             </div>
-            <></>
+            <>
+                <div className={styles.description}>
+                    <p>qty</p>
+                    <p>product</p>
+                    <p>R$</p>
+                </div>
+                
+                {renderSelectedProducts()}
+            </>
             <Button
                 id="submit-button"
                 type="submit"
@@ -87,6 +95,11 @@ export function SendOrder (){
     )
 }
 
-// preciso fazer com q esse ultimo botao seja o de 
-//enviar o pedido e os outros só pra lidar com o
-//nome do cliente.
+// receber do pai uma props que vai trazer o array de itens
+// pode ser uma função que mapeia o array e tranforma em estrutura
+{/* <Button />
+<p>3</p>
+<Button />
+
+<p>{product.name}</p>
+<p>{product.price}</p> */}

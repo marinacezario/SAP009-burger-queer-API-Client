@@ -36,6 +36,12 @@
     width: 70%;
 }
 
+.description {
+    width: 90%;
+    display: grid;
+    grid-template-columns: auto 60% auto;
+}
+
 .order_btn {
     width: 14rem;
     height: 5rem;
