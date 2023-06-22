@@ -6,6 +6,7 @@ import { SendOrder } from '../../Components/SendOrder/SendOrder';
 
 import styles from "./NewOrder.module.css"
 import { Button } from '../../Components/Button/Button';
+import { handleSendOrder } from '../../api/orders';
 
 export function NewOrder (){
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -13,7 +14,7 @@ export function NewOrder (){
 
 //criar a função handleSelectedProducts
   const handleSelectedProducts = (product) => {
-    product.qtd = 1
+    product.quantity = 1
     console.log(product);
 
     // Verificar se o item já está no array
@@ -28,21 +29,33 @@ export function NewOrder (){
     return selectedProducts;
   };
 
-  const handleIncrement = (product) => {
-    return product.qtd++
-  }
+  const handleQuantity = (product, children) => {
 
-  const handleDecrement = () => {
-    setQuantity((prevQuantity) => prevQuantity - 1);
+    const getIndex = selectedProducts.findIndex((item) => item.id === product.id);
+    const updatedOrder = [...selectedProducts]
 
-    if (quantity === 0){
-      setSelectedProducts((prevSelectedProducts) => {
-        // Remove o produto do array selectedProducts
-        const updatedProducts = prevSelectedProducts.filter(
-          (product) => product.id !== selectedProducts.id
-        );
-        return updatedProducts;
-      })
+    if (children === '-') {
+      if (product.quantity <= 1) {
+        updatedOrder.splice(getIndex, 1);
+
+        setSelectedProducts(updatedOrder)
+      } else {
+        const specificProduct = updatedOrder[getIndex];
+        const decrement = specificProduct.quantity - 1;
+
+        updatedOrder[getIndex].quantity = decrement;
+        setSelectedProducts(updatedOrder)
+        setQuantity(decrement)
+      }
+    }
+
+    if (children === '+') {
+      const specificProduct = updatedOrder[getIndex];
+        const increment = specificProduct.quantity + 1;
+
+        updatedOrder[getIndex].quantity = increment;
+        setSelectedProducts(updatedOrder)
+        setQuantity(increment)
     }
   }
 
@@ -58,36 +71,51 @@ export function NewOrder (){
             value="decrement-button"
             className={styles.quantity_btn}
             data-testid="decrement-button"
-            onClick={handleDecrement}
+            onClick={() => handleQuantity(product, '-')}
           >
             -
           </Button>
-          {quantity}
+          {product.quantity}
           <Button
             id="increment-button"
             type="button"
             value="increment-button"
             className={styles.quantity_btn}
             data-testid="increment-button"
-            onClick={handleIncrement}
+            onClick={() => handleQuantity(product, '+')}
           >
             +
           </Button>
         </div>
         
         <p>{product.name}</p>
-        <p>{product.price}</p>
+        <p>{product.price * product.quantity}</p>
 
       </div>
     ));
   }
+
+  const renderOrderTotal = () => {
+    let total = 0
+    selectedProducts.forEach((product) => {
+      total += product.price * product.quantity
+    })
+
+    return total
+  }
+
+  const handleSendOrder = (e) => {
+    e.preventDefault();
+    
+    console.log("client name", name)
+};
 
     return (
         <>
         <Header showButton />
         <div className={styles.new_order}>
           <Menu handleSelectedProducts = {handleSelectedProducts}/>
-          <SendOrder renderSelectedProducts={renderSelectedProducts}/>
+          <SendOrder renderSelectedProducts={renderSelectedProducts} renderOrderTotal={renderOrderTotal} handleSendOrder={handleSendOrder}/>
         </div>
         </>
     )

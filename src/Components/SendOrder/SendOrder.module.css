@@ -39,7 +39,24 @@
 .description {
     width: 90%;
     display: grid;
-    grid-template-columns: auto 60% auto;
+    grid-template-columns: 25% 55% auto;
+}
+
+.qty_p {
+    justify-self: center;
+}
+
+.qty_price {
+    justify-self: end;
+    margin-right: 18px;
+}
+
+.order_total {
+    width: 80%;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    margin-top: 4rem;
 }
 
 .order_btn {
