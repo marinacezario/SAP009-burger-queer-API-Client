@@ -7,7 +7,7 @@ import { Button } from "../../Components/Button/Button";
 //styles
 import styles from "./Menu.module.css";
 
-export function Menu(clickHandler) {
+export function Menu({handleSelectedProducts}) {
   const [activeButton, setActiveButton] = useState(null);
   const [products, setProducts] = useState([]);
 
@@ -26,37 +26,42 @@ export function Menu(clickHandler) {
   const filteredProducts = products.filter((item) => item.type === activeButton);
 
   return (
-    <>
-      <Button
-        id="breakfast-button"
-        type="button"
-        text="breakfast"
-        value="breakfast"
-        className={styles.menu_btn}
-        data-testid="breakfast-button"
-        onClick={() => handleButtonClick("Breakfast")}
-      />
-      <Button
-        id="diner-button"
-        type="button"
-        text="diner"
-        value="diner"
-        className={styles.menu_btn}
-        data-testid="diner-button"
-        onClick={() => handleButtonClick("Diner")}
-      />
+    <div className={styles.menu}>
+      <div>
+        <Button
+          id="breakfast-button"
+          type="button"
+          value="breakfast"
+          className={styles.menu_btn}
+          data-testid="breakfast-button"
+          onClick={() => handleButtonClick("Breakfast")}
+        >
+          breakfast
+        </Button>
+        <Button
+          id="diner-button"
+          type="button"
+          value="diner"
+          className={styles.menu_btn}
+          data-testid="diner-button"
+          onClick={() => handleButtonClick("Diner")}
+        >
+          diner
+        </Button>
+      </div>
+      
       <ul className={styles.menu_list}>
         {filteredProducts.map((product) => (
-          <li className={styles.menu_products} key={product.id}>
+          <li key={product.id}>
             <button
               className={styles.menu_products}
-              onClick={clickHandler} //clickHandler é props e deve ser passado no pai 
+              onClick={() => handleSelectedProducts(product)} //clickHandler é props e deve ser passado no pai 
             >
-              {product.name} R${product.price}
+              {product.name} <br></br> R${product.price}
             </button>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

@@ -10,7 +10,7 @@ import { handleSubmitForm } from "../../api/users";
 // styles
 import styles from "./Form.module.css";
 import { errorHandler } from "../../error-handler";
-import {setItem, getItem} from '../../storage/localStorage';
+import {setItem} from '../../storage/localStorage';
 
 export function Form() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ export function Form() {
         // console.log(email);
         console.log(response);
         setItem('token', response.data.accessToken);
-        console.log(getItem('token'));
+        setItem('userId', response.data.user.id)
         const userDataRole = response.data.user.role;
 
         if (userDataRole === "admin") {
@@ -74,6 +74,7 @@ export function Form() {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         data-testid="email-input"
+        className={styles.inputs}
       />
       <Input
         type="password"
@@ -81,15 +82,17 @@ export function Form() {
         value={password}
         onChange={(event) => setPassword(event.target.value)}
         data-testid="password-input"
+        className={styles.inputs}
       />
       <Button
         id="submit-button"
         type="submit"
-        text="login"
         value="login"
         className={styles.send_btn}
         data-testid="submit-button"
-      />
+      >
+        login
+      </Button>
       {error !== null && <ErrorLabel value={error} />}{" "}
     </form>
   );

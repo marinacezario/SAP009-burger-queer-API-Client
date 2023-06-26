@@ -11,10 +11,26 @@
     color: white;
 }
 
+.inputs {
+    border: none;
+    border-bottom: solid .5rem white;
+    background: #4B4447;
+    height: 5rem;
+    margin-bottom: 10vh;
+    font-size: 2.6rem;
+    color: white;
+    width: 80%;
+}
+
+.inputs::placeholder {
+    font-size: 2.6rem;
+    color:white;
+}
+
 .send_btn {
-    width: 17rem;
+    width: 19rem;
     height: 6rem;
-    border-radius: 25px;
+    border-radius: 15px;
     background-color: #d1ac60;
     color: black;
     font-size: 1.6em;

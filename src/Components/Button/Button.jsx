@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Button = ({ id, text, type, alt, value, className, ...props }) => {
+export const Button = ({ id, children, type, alt, value, className, onClick }) => {
   return (
     <button
       id={id}
@@ -8,9 +8,9 @@ export const Button = ({ id, text, type, alt, value, className, ...props }) => {
       aria-label={alt} 
       value={value}
       className={className}
-      {...props}
+      onClick = {onClick}
     >
-      {text}
+      {children}
     </button>
   );
 };

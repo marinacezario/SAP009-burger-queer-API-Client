@@ -1,15 +1,1 @@
-.inputs {
-    border: none;
-    border-bottom: solid .5rem white;
-    background: #4B4447;
-    height: 5rem;
-    margin-bottom: 10vh;
-    font-size: 2.6rem;
-    color: white;
-    width: 80%;
-}
 
-.inputs::placeholder {
-    font-size: 2.6rem;
-    color:white;
-}

@@ -10,7 +10,7 @@ import styles from './Login.module.css'
 export function Login(){
   return (
     <>
-      <Header />
+      <Header showButton={false} />
       <div className={styles.login}>
         <img src={logo} alt="Burguer Queer Logo" className={styles.main_logo}/>
         <Form /> 
