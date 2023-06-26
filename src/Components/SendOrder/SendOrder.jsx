@@ -3,11 +3,45 @@ import React, { useState } from "react";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 
+import { getItem } from "../../storage/localStorage";
+import { createNewOrder } from "../../api/orders";
+
 import styles from "./SendOrder.module.css"
 
-export function SendOrder({ renderSelectedProducts, renderOrderTotal, handleSendOrder }) {
+
+export function SendOrder({ renderSelectedProducts, renderOrderTotal, orderResume }) {
 
     const [name, setName] = useState("");
+
+    const handleSendOrder = (e) => {
+        e.preventDefault();
+        
+        const waiterId = getItem('userId')
+        const clientName = name
+
+        if (clientName === '') {
+            throw new Error('Please, insert the name of the client');
+          }
+        
+        if (orderResume.length <= 0) {
+            throw new Error('Please, choose at least 1 product');
+        }
+
+        try {
+            const orderSent = createNewOrder(orderResume, clientName, waiterId)
+
+            if (orderSent.status === 201) {
+                console.log('pedido enviado', orderSent)
+                // toast.success('Pedido enviado à cozinha com sucesso!');
+                // setOrderItem([]);
+                setName('');
+                //mudar a rota para current orders
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }   
+          
 
     return (
         <form
@@ -41,19 +75,10 @@ export function SendOrder({ renderSelectedProducts, renderOrderTotal, handleSend
                 value="send-order"
                 className={styles.order_btn}
                 data-testid="submit-button"
-                onClick={handleSendOrder()}
+                onClick={handleSendOrder}
             >
                 send order
             </Button>
         </form>
     )
 }
-
-// receber do pai uma props que vai trazer o array de itens
-// pode ser uma função que mapeia o array e tranforma em estrutura
-{/* <Button />
-<p>3</p>
-<Button />
-
-<p>{product.name}</p>
-<p>{product.price}</p> */}

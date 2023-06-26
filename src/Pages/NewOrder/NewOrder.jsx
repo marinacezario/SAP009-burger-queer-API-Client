@@ -6,7 +6,6 @@ import { SendOrder } from '../../Components/SendOrder/SendOrder';
 
 import styles from "./NewOrder.module.css"
 import { Button } from '../../Components/Button/Button';
-import { handleSendOrder } from '../../api/orders';
 
 export function NewOrder (){
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -103,19 +102,24 @@ export function NewOrder (){
 
     return total
   }
+ //o orderResume vai precisar percorrer o array de produtos selecionados (selectedProducts)
+ // e retornar um novo array no formato que a gente precisa
 
-  const handleSendOrder = (e) => {
-    e.preventDefault();
-    
-    console.log("client name", name)
-};
+  const orderResume = selectedProducts.map((product) => {
+    return {
+      "qty": product.quantity,
+      "product" : product
+    }
+  })
+
+  console.log("order resume", orderResume)
 
     return (
         <>
         <Header showButton />
         <div className={styles.new_order}>
           <Menu handleSelectedProducts = {handleSelectedProducts}/>
-          <SendOrder renderSelectedProducts={renderSelectedProducts} renderOrderTotal={renderOrderTotal} handleSendOrder={handleSendOrder}/>
+          <SendOrder renderSelectedProducts={renderSelectedProducts} renderOrderTotal={renderOrderTotal} orderResume={orderResume}/>
         </div>
         </>
     )

@@ -45,7 +45,7 @@ export function Form() {
         // console.log(email);
         console.log(response);
         setItem('token', response.data.accessToken);
-        console.log(getItem('token'));
+        setItem('userId', response.data.user.id)
         const userDataRole = response.data.user.role;
 
         if (userDataRole === "admin") {
