@@ -10,7 +10,7 @@ import { handleSubmitForm } from "../../api/users";
 // styles
 import styles from "./Form.module.css";
 import { errorHandler } from "../../error-handler";
-import {setItem, getItem} from '../../storage/localStorage';
+import {setItem} from '../../storage/localStorage';
 
 export function Form() {
   const navigate = useNavigate();
