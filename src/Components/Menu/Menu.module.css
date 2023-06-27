@@ -1,32 +1,70 @@
 .menu {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
 }
+
+.menu_options {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
 .menu_btn {
-    width: 19rem;
-    height: 6rem;
+    width: 14rem;
+    height: 5rem;
     border-radius: 15px;
     background-color: #d1ac60;
     color: black;
-    font-size: 1.6em;
-    margin: 4rem;
+    font-size: 1.2em;
 }
 .menu_btn:active {
     background-color: #59C9C5;
 }
 .menu_list {
     list-style: none;
-    width: 50vw;
+    width: 90vw;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
     justify-content: center;
 }
 .menu_products {
-    width: 19rem;
-    height: 6rem;
+    width: 14rem;
+    height: 5rem;
     border-radius: 15px;
     background-color: #d1ac60;
     color: black;
-    font-size: 1em;
+    font-size: 0.8em;
+}
+
+@media screen and (min-width: 600px) {
+    .menu_options{
+        gap: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .menu_btn {
+        width: 19rem;
+        height: 6rem;
+        font-size: 1.6em;
+    }
+
+    .menu_list {
+        gap: 10px;
+    }
+
+    .menu_products {
+        width: 19rem;
+        height: 6rem;
+        font-size: 1em;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .menu_list {
+        width: 50vw;
+    }
 }

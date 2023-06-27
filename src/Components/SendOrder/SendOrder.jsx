@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify'
 
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
@@ -7,38 +9,39 @@ import { getItem } from "../../storage/localStorage";
 import { createNewOrder } from "../../api/orders";
 
 import styles from "./SendOrder.module.css"
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export function SendOrder({ renderSelectedProducts, renderOrderTotal, orderResume }) {
 
+    const navigate = useNavigate();
     const [name, setName] = useState("");
 
-    const handleSendOrder = (e) => {
+    const handleSendOrder = async (e) => {
         e.preventDefault();
         
         const waiterId = getItem('userId')
         const clientName = name
 
         if (clientName === '') {
-            throw new Error('Please, insert the name of the client');
+            toast.error('Please, insert the name of the client');
+            throw new Error('Missing client name');
           }
         
         if (orderResume.length <= 0) {
-            throw new Error('Please, choose at least 1 product');
+            toast.error('Please, choose at least 1 product');
+            throw new Error('No product selected');
         }
 
         try {
-            const orderSent = createNewOrder(orderResume, clientName, waiterId)
+            const orderSent = await createNewOrder(orderResume, clientName, waiterId);
 
             if (orderSent.status === 201) {
-                console.log('pedido enviado', orderSent)
-                // toast.success('Pedido enviado à cozinha com sucesso!');
-                // setOrderItem([]);
-                setName('');
-                //mudar a rota para current orders
+                toast.success('Sent to kitchen!');
+                navigate("/current-orders");
             }
         } catch (error) {
-            console.log(error.message)
+            toast.error(error.message)
         }
     }   
           

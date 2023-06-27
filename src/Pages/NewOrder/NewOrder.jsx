@@ -14,7 +14,6 @@ export function NewOrder (){
 //criar a função handleSelectedProducts
   const handleSelectedProducts = (product) => {
     product.quantity = 1
-    console.log(product);
 
     // Verificar se o item já está no array
     if (!selectedProducts.some((selectedProduct) => selectedProduct.id === product.id)) {
@@ -24,7 +23,6 @@ export function NewOrder (){
       console.log(product)
     }
 
-    console.log(selectedProducts);
     return selectedProducts;
   };
 
@@ -111,8 +109,6 @@ export function NewOrder (){
       "product" : product
     }
   })
-
-  console.log("order resume", orderResume)
 
     return (
         <>

@@ -4,8 +4,7 @@ import { getItem } from "../storage/localStorage";
 const token = getItem("token");
 
 export const createNewOrder = (orderResume, clientName, waiterId) => {
-  console.log(token)
-    return api
+  return api
     .post('/orders/', {
           userId: waiterId,
           client: clientName,

@@ -69,6 +69,11 @@
     margin: 2vh;
 }
 
+@media screen and (min-width: 600px) {
+    .order_form {
+        width: 60vw
+    }
+}
 
 @media screen and (min-width: 1000px) {
     .order_form {
