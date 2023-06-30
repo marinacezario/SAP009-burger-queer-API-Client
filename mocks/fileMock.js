@@ -1,1 +1,1 @@
-module.exports = ''; 
+module.exports = 'mocked-css'; 

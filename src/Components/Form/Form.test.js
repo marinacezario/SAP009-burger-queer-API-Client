@@ -14,7 +14,7 @@ describe("Form", () => {
   test("should render correctly", () => {
     render(<form onSubmit={mockOnChange} data-testid="form"></form>);
 
-    const formElement = screen.getByTestId("form");
+    const formElement = screen.getByTestId("form");/* eslint-disable react/react-in-jsx-scope */
     expect(formElement).toBeInTheDocument();
   });
 
