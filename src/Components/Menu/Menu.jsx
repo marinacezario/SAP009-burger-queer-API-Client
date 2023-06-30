@@ -27,7 +27,7 @@ export function Menu({handleSelectedProducts}) {
 
   return (
     <div className={styles.menu}>
-      <div>
+      <div className={styles.menu_options}>
         <Button
           id="breakfast-button"
           type="button"

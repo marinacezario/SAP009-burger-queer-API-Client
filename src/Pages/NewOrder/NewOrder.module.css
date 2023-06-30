@@ -1,8 +1,8 @@
 .new_order {
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
     margin: 2rem;
-    flex-direction: row;
+    flex-direction: column;
     color: white;
 }
 
@@ -27,4 +27,11 @@
     font-size: 1.5em;
     margin: 1vh;
     border: none;
+}
+
+@media screen and (min-width: 1000px) {
+    .new_order {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
 }
