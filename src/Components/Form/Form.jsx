@@ -52,6 +52,8 @@ export function Form() {
           navigate("/admin");
         } else if (userDataRole === "waiter") {
           navigate("/new-order");
+        } else if (userDataRole === "kitchen") {
+          navigate("/kitchen")
         }
       })
       .catch((error) => {
