@@ -5,11 +5,11 @@ const token = getItem("token");
 
 export const createNewOrder = (orderResume, clientName, waiterId) => {
   return api
-    .post('/orders/', {
+    .post('/orders', {
           userId: waiterId,
           client: clientName,
           products: orderResume,
-          status: 'pendente',
+          status: 'pending',
           dateEntry: new Date(),
         }, {
         headers: {
@@ -25,6 +25,17 @@ export const createNewOrder = (orderResume, clientName, waiterId) => {
     });
 };
 
-// export const getOrders = () => {
-//   return api.get('/orders');
-// };
+export const getOrders = () => {
+  return api
+    .get('/orders', {
+        headers: {
+          Authorization: `Bearer ${token}`}
+      }
+    )
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
