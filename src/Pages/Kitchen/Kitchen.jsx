@@ -1,41 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { getOrders } from "../../api/orders";
+import React from 'react';
 
 import { Header } from '../../Components/Header/Header';
-import { Order } from '../../Components/Order/Order';
+import { KitchenOrders } from '../../Components/KitchenOrders/KitchenOrders';
 
 export function Kitchen (){
-
-    const [pendingOrders, setPendingOrder] = useState([])
-
-    useEffect(() => {
-        getOrders()
-        .then((response) => {
-            const ordersData = response.data
-            setPendingOrder(ordersData.filter((order) => order.status === 'pending'))
-        })
-    }, [pendingOrders])
-   
 
     return (
         <>
             <Header />
-            <h1>Pending Orders</h1>
-            <section>
-                {pendingOrders.map((order) => (
-                    <Order 
-                        clientName={order.client} 
-                        date={order.dateEntry} 
-                        products={order.products.map((product) => (
-                            <li>
-                                <p>{product.qty}</p>
-                                <p>{product.name}</p>
-                            </li>
-                        ))}
-                        titleBtn=
-                    />
-                ))}
-            </section>
+            <KitchenOrders
+                sectionTitle="Pending Orders"
+                orderStatus="pending"
+                btnText="prepare"
+                newStatus="preparing"
+            />
+            <KitchenOrders
+                sectionTitle="Preparing"
+                orderStatus="preparing"
+                btnText="ready"
+                newStatus="ready"
+            />
         </>
-    )
+    );
 }
