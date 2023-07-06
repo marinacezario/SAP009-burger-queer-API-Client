@@ -39,3 +39,20 @@ export const getOrders = () => {
       throw error;
     });
 };
+
+export const updateStatus = (id, newStatus) => {
+  return api
+    .patch(`/orders/${id}`, {
+      status: newStatus,
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    })
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
