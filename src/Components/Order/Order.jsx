@@ -26,7 +26,7 @@ export function Order({
       <Button
         id="ready-button"
         type="button"
-        value="{status}"
+        value={status}
         className={styles.ready_btn}
         data-testid="submit-button"
         onClick={() => onStatusChange(status)}
