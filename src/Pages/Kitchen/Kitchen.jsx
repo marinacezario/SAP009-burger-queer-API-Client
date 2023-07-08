@@ -5,6 +5,8 @@ import { getOrders, updateStatus } from "../../api/orders";
 import { Header } from '../../Components/Header/Header';
 import { Order } from '../../Components/Order/Order';
 
+import styles from './Kitchen.module.css';
+
 export function Kitchen (){
 
     const [pendingOrders, setPendingOrder] = useState([])
@@ -55,47 +57,53 @@ export function Kitchen (){
     return (
         <>
             <Header />
-            <section>
-                <h2>PENDING ORDERS</h2>
-                    {pendingOrders.map((order) => (
-                        <Order
-                            key={order.id} 
-                            clientName={order.client} 
-                            date={order.dateEntry} 
-                            products={order.products.map((product) => (
-                                <li key={product.product.id}>
-                                    <p>{product.qty}</p>
-                                    <p>{product.product.name}</p>
-                                </li>
-                            ))}
-                            status={order.status}
-                            titleBtn="prepare"
-                            onStatusChange={() => handleStatusChange(order.id, "preparing")
-                            }
-                        />
-                    ))}
-            </section>
+            <div className={styles.orders}>
+                <section className={styles.pending_orders}>
+                    <h2>PENDING ORDERS</h2>
+                        {pendingOrders.map((order) => (
+                            <Order
+                                className={styles.order_component}
+                                key={order.id} 
+                                clientName={order.client} 
+                                date={order.dateEntry} 
+                                products={order.products.map((product) => (
+                                    <li key={product.product.id} className={styles.product}>
+                                        <p className={styles.product_p}>{product.qty}</p>
+                                        <p className={styles.product_p}>{product.product.name}</p>
+                                    </li>
+                                ))}
+                                status={order.status}
+                                borderColor="pink"
+                                titleBtn="prepare"
+                                onStatusChange={() => handleStatusChange(order.id, "preparing")
+                                }
+                            />
+                        ))}
+                </section>
 
-            <section>
-                <h2>PREPARING</h2>
-                    {preparing.map((order) => (
-                        <Order
-                            key={order.id} 
-                            clientName={order.client} 
-                            date={order.dateEntry} 
-                            products={order.products.map((product) => (
-                                <li key={product.product.id}>
-                                    <p>{product.qty}</p>
-                                    <p>{product.product.name}</p>
-                                </li>
-                            ))}
-                            status={order.status}
-                            titleBtn="ready"
-                            onStatusChange={() => handleStatusChange(order.id, "ready")
-                            }
-                        />
-                    ))}
-            </section>
+                <section className={styles.preparing}>
+                    <h2 className={styles.section_title}>PREPARING</h2>
+                        {preparing.map((order) => (
+                            <Order
+                                key={order.id} 
+                                clientName={order.client} 
+                                date={order.dateEntry} 
+                                products={order.products.map((product) => (
+                                    <li key={product.product.id}>
+                                        <p>{product.qty}</p>
+                                        <p>{product.product.name}</p>
+                                    </li>
+                                ))}
+                                status={order.status}
+                                borderColor="blue"
+                                titleBtn="ready"
+                                onStatusChange={() => handleStatusChange(order.id, "ready")
+                                }
+                            />
+                        ))}
+                </section>
+            </div>
+            
         </>
     );
 }

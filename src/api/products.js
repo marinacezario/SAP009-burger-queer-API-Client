@@ -1,14 +1,8 @@
 import { api } from "./api";
-import { getItem } from "../storage/localStorage";
-
-const getToken = getItem("token");
 
 export const handleShowMenu = () => {
     return api
-    .get('/products', {
-        headers: {
-          Authorization: `Bearer ${getToken}`}
-      }
+    .get('/products'
     )
     .then((response) => {
       return response;

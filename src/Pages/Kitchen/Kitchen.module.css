@@ -1,0 +1,52 @@
+.orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.pending_orders {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preparing {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_title {
+    margin-top: 2.5em;
+}
+.product {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.product_p {
+    font-size: 2rem;
+}
+
+@media screen and (min-width: 1000px) {
+    .orders {
+        flex-direction: row;
+    }
+
+    .pending_orders {
+        width: 45vw;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    /* PRECISA COLOCAR O MAP DE RENDERIZAR OS PEDIDOS DENTRO DE UMA DIV PRA APLICAR O FLEX-WRAP */
+    .preparing {
+        width: 45vw;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
