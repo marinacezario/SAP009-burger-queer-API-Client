@@ -10,5 +10,3 @@ describe('Header component', () => {
     expect(logoElement).toBeInTheDocument();
   });
 });
-
-  

@@ -63,9 +63,9 @@ export function Kitchen (){
                             clientName={order.client} 
                             date={order.dateEntry} 
                             products={order.products.map((product) => (
-                                <li key={product.id}>
+                                <li key={product.product.id}>
                                     <p>{product.qty}</p>
-                                    <p>{product.name}</p>
+                                    <p>{product.product.name}</p>
                                 </li>
                             ))}
                             status={order.status}
