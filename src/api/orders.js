@@ -1,7 +1,4 @@
 import { api } from "./api";
-import { getItem } from "../storage/localStorage";
-
-const token = getItem("token");
 
 export const createNewOrder = (orderResume, clientName, waiterId) => {
   return api
@@ -11,11 +8,7 @@ export const createNewOrder = (orderResume, clientName, waiterId) => {
           products: orderResume,
           status: 'pending',
           dateEntry: new Date(),
-        }, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-      }
+        }
     )
     .then((response) => {
       return response;
@@ -27,10 +20,7 @@ export const createNewOrder = (orderResume, clientName, waiterId) => {
 
 export const getOrders = () => {
   return api
-    .get('/orders', {
-        headers: {
-          Authorization: `Bearer ${token}`}
-      }
+    .get('/orders'
     )
     .then((response) => {
       return response;
@@ -44,10 +34,6 @@ export const updateStatus = (id, newStatus) => {
   return api
     .patch(`/orders/${id}`, {
       status: newStatus,
-    }, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
     })
     .then((response) => {
       return response;
