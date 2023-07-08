@@ -21,7 +21,7 @@ export function Order({
 
       <h1>Order</h1>
 
-      <div>{products}</div>
+      <ul>{products}</ul>
 
       <Button
         id="ready-button"
