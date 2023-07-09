@@ -22,6 +22,15 @@
 .section_title {
     margin-top: 2.5em;
 }
+
+.wrap_orders {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 2em;
+}
 .product {
     display: flex;
     flex-direction: row;
@@ -35,18 +44,17 @@
 @media screen and (min-width: 1000px) {
     .orders {
         flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
     }
 
     .pending_orders {
         width: 45vw;
-        flex-direction: row;
-        flex-wrap: wrap;
     }
 
     /* PRECISA COLOCAR O MAP DE RENDERIZAR OS PEDIDOS DENTRO DE UMA DIV PRA APLICAR O FLEX-WRAP */
     .preparing {
         width: 45vw;
-        flex-direction: row;
-        flex-wrap: wrap;
     }
+
 }
