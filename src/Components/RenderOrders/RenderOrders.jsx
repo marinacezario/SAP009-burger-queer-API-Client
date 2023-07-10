@@ -2,15 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { getOrders, updateStatus } from "../../api/orders";
 
-import { Header } from '../../Components/Header/Header';
 import { Order } from '../../Components/Order/Order';
 
-import styles from './Kitchen.module.css';
+import styles from './RenderOrders.module.css';
 
-export function RenderOrders (){
+export function RenderOrders ({
+    sectionTitle,
+    stateToBeRendered, 
+    borderColor, 
+    showButton, 
+    titleBtn, 
+    changeStatusTo
+}){
 
     const [pendingOrders, setPendingOrder] = useState([])
     const [preparing, setPreparing] = useState([])
+    const [readyOrders, setReadyOrders] = useState([])
 
     useEffect(() => {
         fetchOrders();
@@ -18,7 +25,7 @@ export function RenderOrders (){
     
     useEffect(() => {
     fetchOrders();
-    }, [pendingOrders, preparing]);
+    }, [pendingOrders, preparing, readyOrders]);
 
     const fetchOrders = () => {
     getOrders()
@@ -26,8 +33,10 @@ export function RenderOrders (){
         const ordersData = response.data;
         const pending = ordersData.filter((order) => order.status === 'pending');
         const preparing = ordersData.filter((order) => order.status === 'preparing');
+        const ready = ordersData.filter((order) => order.status === 'ready');
         setPendingOrder(pending);
         setPreparing(preparing);
+        setReadyOrders(ready);
         })
         .catch((error) => {
         console.error('Error fetching orders:', error);
@@ -44,6 +53,8 @@ export function RenderOrders (){
                     toast.success('Preparing...')
                 } else if ( changeStatus === 'ready') {
                     toast.success('Sent to waiter!')
+                } else if ( changeStatus === 'delivered' ) {
+                    toast.success('Order delivered!')
                 }
 
                 fetchOrders();
@@ -55,59 +66,70 @@ export function RenderOrders (){
     };
 
     return (
-        <>
-            <Header />
-            <div className={styles.orders}>
-                <section className={styles.pending_orders}>
-                    <h2 className={styles.section_title}>PENDING ORDERS</h2>
-                        <div className={styles.wrap_orders}>
-                            {pendingOrders.map((order) => (
-                                <Order
-                                    className={styles.order_component}
-                                    key={order.id} 
-                                    clientName={order.client} 
-                                    date={order.dateEntry} 
-                                    products={order.products.map((product) => (
-                                        <li key={product.product.id} className={styles.product}>
-                                            <p className={styles.product_p}>{product.qty}</p>
-                                            <p className={styles.product_p}>{product.product.name}</p>
-                                        </li>
-                                    ))}
-                                    status={order.status}
-                                    borderColor="pink"
-                                    titleBtn="prepare"
-                                    onStatusChange={() => handleStatusChange(order.id, "preparing")
-                                    }
-                                />
-                            ))}
-                        </div>
-                </section>
-
-                <section className={styles.preparing}>
-                    <h2 className={styles.section_title}>PREPARING</h2>
-                        <div className={styles.wrap_orders}>
-                            {preparing.map((order) => (
-                                <Order
-                                    key={order.id} 
-                                    clientName={order.client} 
-                                    date={order.dateEntry} 
-                                    products={order.products.map((product) => (
-                                        <li key={product.product.id} className={styles.product}>
-                                            <p className={styles.product_p}>{product.qty}</p>
-                                            <p className={styles.product_p}>{product.product.name}</p>
-                                        </li>
-                                    ))}
-                                    status={order.status}
-                                    borderColor="blue"
-                                    titleBtn="ready"
-                                    onStatusChange={() => handleStatusChange(order.id, "ready")
-                                    }
-                                />
-                            ))}
-                        </div>
-                </section>
+        <section className={styles.pending_orders}>
+            <h2 className={styles.section_title}>{sectionTitle}</h2>
+            <div className={styles.wrap_orders}>
+                {stateToBeRendered === 'pending' && pendingOrders.map((order) => (
+                    <Order
+                        className={styles.order_component}
+                        key={order.id} 
+                        clientName={order.client} 
+                        date={order.dateEntry} 
+                        products={order.products.map((product) => (
+                            <li key={product.product.id} className={styles.product}>
+                                <p className={styles.product_p}>{product.qty}</p>
+                                <p className={styles.product_p}>{product.product.name}</p>
+                            </li>
+                        ))}
+                        status={order.status}
+                        borderColor={borderColor}
+                        showButton={showButton}
+                        titleBtn={titleBtn}
+                        onStatusChange={() => handleStatusChange(order.id, {changeStatusTo})
+                        }
+                    />
+                ))}
+                {stateToBeRendered === 'preparing' && preparing.map((order) => (
+                    <Order
+                        className={styles.order_component}
+                        key={order.id} 
+                        clientName={order.client} 
+                        date={order.dateEntry} 
+                        products={order.products.map((product) => (
+                            <li key={product.product.id} className={styles.product}>
+                                <p className={styles.product_p}>{product.qty}</p>
+                                <p className={styles.product_p}>{product.product.name}</p>
+                            </li>
+                        ))}
+                        status={order.status}
+                        borderColor={borderColor}
+                        showButton={showButton}
+                        titleBtn={titleBtn}
+                        onStatusChange={() => handleStatusChange(order.id, {changeStatusTo})
+                        }
+                    />
+                ))}
+                {stateToBeRendered === 'ready' && readyOrders.map((order) => (
+                    <Order
+                        className={styles.order_component}
+                        key={order.id} 
+                        clientName={order.client} 
+                        date={order.dateEntry} 
+                        products={order.products.map((product) => (
+                            <li key={product.product.id} className={styles.product}>
+                                <p className={styles.product_p}>{product.qty}</p>
+                                <p className={styles.product_p}>{product.product.name}</p>
+                            </li>
+                        ))}
+                        status={order.status}
+                        borderColor={borderColor}
+                        showButton={showButton}
+                        titleBtn={titleBtn}
+                        onStatusChange={() => handleStatusChange(order.id, {changeStatusTo})
+                        }
+                    />
+                ))}
             </div>
-            
-        </>
+        </section>
     );
 }
