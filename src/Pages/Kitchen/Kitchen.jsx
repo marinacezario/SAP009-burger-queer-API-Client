@@ -15,7 +15,7 @@ export function Kitchen (){
                     sectionTitle="PENDING ORDERS"
                     stateToBeRendered="pending"
                     borderColor="pink"
-                    showButton="true"
+                    showButton={true}
                     titleBtn="prepare"
                     changeStatusTo="preparing"
                 />
@@ -24,12 +24,11 @@ export function Kitchen (){
                     sectionTitle="PREPARING"
                     stateToBeRendered="preparing"
                     borderColor="blue"
-                    showButton="true"
+                    showButton={true}
                     titleBtn="ready"
                     changeStatusTo="ready"
                 />
             </div>
-            
         </>
     );
 }
