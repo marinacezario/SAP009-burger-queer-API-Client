@@ -37,7 +37,12 @@ export function Order({
 
       <h1>Order</h1>
 
-      <ul className={styles.products}>{products}</ul>
+      <ul className={styles.products} data-testid="products-list">
+        {products.map((product, index) => (
+          <li key={index}>{product}</li>
+        ))}
+      </ul>
+
 
       <Button
         id="ready-button"

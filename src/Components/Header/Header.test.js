@@ -1,14 +1,17 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom'; // Import BrowserRouter
 import { Header } from './Header';
-import '@testing-library/jest-dom/extend-expect'; // Importar a extensão do jest-dom
+import '@testing-library/jest-dom/extend-expect';
 
 describe('Header component', () => {
   it('renders the header with the logo', () => {
-    render(<Header />);
-    const logoElement = screen.getByAltText('Burguer Queer Logo');
-    expect(logoElement).toBeInTheDocument();
+    render(
+      <Router> {/* Wrap the Header component with the Router */}
+        <Header />
+      </Router>
+    );
+    const logoElement = screen.queryAllByAltText('Burguer Queer Logo');
+    expect(logoElement.length).toBe(2); //Checks if there are two elements with alt attribute 'Burger Queer Logo'
   });
 });
-
-  
