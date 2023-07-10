@@ -12,6 +12,7 @@ export function Order({
   status,
   borderColor,
   onStatusChange,
+  showButton
   }) {
 
     let setBorderColor = '';
@@ -38,13 +39,11 @@ export function Order({
       <h1>Order</h1>
 
       <ul className={styles.products} data-testid="products-list">
-        {products.map((product, index) => (
-          <li key={index}>{product}</li>
-        ))}
+        {products}
       </ul>
 
 
-      <Button
+      {showButton && (<Button
         id="ready-button"
         type="button"
         value={status}
@@ -53,7 +52,7 @@ export function Order({
         onClick={() => onStatusChange(status)}
       >
         {titleBtn}
-      </Button>
+      </Button>)}
     </div>
   );
 }
