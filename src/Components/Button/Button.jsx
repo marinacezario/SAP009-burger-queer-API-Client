@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Button = ({ id, children, type, alt, value, className, onClick }) => {
+export const Button = ({ id, children, type, alt, value, className, onClick, 'data-testid': testId, ...props }) => {
   return (
     <button
       id={id}
@@ -9,6 +9,8 @@ export const Button = ({ id, children, type, alt, value, className, onClick }) =
       value={value}
       className={className}
       onClick = {onClick}
+      data-testid={testId}
+      {...props}
     >
       {children}
     </button>
