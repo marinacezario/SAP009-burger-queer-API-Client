@@ -19,16 +19,20 @@ describe("Order", () => {
     const titleBtn = "Submit";
     const status = "pending";
     const borderColor = "blue";
+    const showButton = true;
     const onStatusChange = jest.fn();
 
     const { getByText, getByTestId } = render(
       <Order
         clientName={clientName}
         date={date}
-        products={products}
+        products={products.map((product, index) => (
+          <li key={index}>{product}</li>
+        ))}
         titleBtn={titleBtn}
         status={status}
         borderColor={borderColor}
+        showButton={showButton}
         onStatusChange={onStatusChange}
       />
     );
