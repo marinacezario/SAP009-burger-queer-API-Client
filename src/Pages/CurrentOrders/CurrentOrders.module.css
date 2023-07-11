@@ -1,0 +1,22 @@
+.orders_waiter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white; 
+}
+
+.orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+@media screen and (min-width: 1000px) {
+    .orders {
+        flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
+    }
+
+}

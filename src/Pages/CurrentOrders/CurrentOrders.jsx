@@ -9,7 +9,7 @@ export function CurrentOrders (){
     return (
         <>
             <Header showButton />
-            <div className={styles.render_orders_waiter}>
+            <div className={styles.orders_waiter}>
                 <RenderOrders 
                     sectionTitle="CURRENT ORDERS"
                     stateToBeRendered="ready"
