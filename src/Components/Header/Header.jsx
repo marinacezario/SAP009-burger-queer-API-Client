@@ -7,12 +7,18 @@ import logoMobile from '../../assets/img/logo-header-mobile.png';
 import { Button } from '../Button/Button';
 
 const getNavigationDetails = (pathname) => {
-  const routeWaiter = pathname === '/new-order' ? "/current-orders" : "/new-order"; 
-  const textWaiter = pathname === '/new-order' ? "current orders" : "new order";
-  const routeAdmin = pathname === '/users' ? "/products" : "/users";
-  const textAdmin = pathname === '/users' ? "products" : "employees";
+  let text = "";
+  let route = "";
 
-  return {routeWaiter, textWaiter, routeAdmin, textAdmin}
+  if (location.pathname === '/new-order' || location.pathname === '/current-orders') {
+    text = pathname === '/new-order' ? "current orders" : "new order";
+    route = pathname === '/new-order' ? "/current-orders" : "/new-order"; 
+  } else if (location.pathname === '/users' || location.pathname === '/products') {
+    text = pathname === '/users' ? "products" : "employees";
+    route = pathname === '/users' ? "/products" : "/users";
+  }
+  
+  return {route, text}
 }
 
 export function Header({ showButton }) {
@@ -24,13 +30,8 @@ export function Header({ showButton }) {
   const clickHandler = () => {
     const details = getNavigationDetails(location.pathname);
 
-    if (location.pathname === '/new-order' || location.pathname === '/current-orders') {
-      navigate(details.routeWaiter);
-      setText(details.textWaiter);
-    } else if (location.pathname === '/users' || location.pathname === '/products') {
-      navigate(details.routeAdmin);
-      setText(details.textAdmin);
-    }    
+    navigate(details.route);
+    setText(details.text);  
   };
 
   return (

@@ -7,7 +7,7 @@ import { Header } from '../../Components/Header/Header';
 export function Products (){ 
     return(
         <>
-            <Header/>
+            <Header showButton/>
             <h2>Products</h2>
         </>
     )
