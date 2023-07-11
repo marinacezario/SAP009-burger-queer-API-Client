@@ -15,3 +15,4 @@ export const handleSubmitForm = (email, password) => {
     throw error;
     });
 };
+
