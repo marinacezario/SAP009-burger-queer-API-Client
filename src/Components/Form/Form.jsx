@@ -49,7 +49,7 @@ export function Form() {
         const userDataRole = response.data.user.role;
 
         if (userDataRole === "admin") {
-          navigate("/admin");
+          navigate("/users");
         } else if (userDataRole === "waiter") {
           navigate("/new-order");
         } else if (userDataRole === "kitchen") {
