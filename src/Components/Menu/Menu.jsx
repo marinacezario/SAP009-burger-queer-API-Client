@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { handleShowMenu } from "../../api/products";
+import { getProducts } from "../../api/products";
 
 //components
 import { Button } from "../../Components/Button/Button";
@@ -13,7 +13,7 @@ export function Menu({handleSelectedProducts}) {
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
-    handleShowMenu()
+    getProducts()
       .then((response) => {
         // console.log(response.data)
         setProducts(response.data)
