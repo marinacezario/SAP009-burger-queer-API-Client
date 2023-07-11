@@ -7,9 +7,17 @@ import logoMobile from '../../assets/img/logo-header-mobile.png';
 import { Button } from '../Button/Button';
 
 const getNavigationDetails = (pathname) => {
-  const route = pathname === '/new-order' ? "/current-orders" : "/new-order"; 
-  const text = pathname === '/new-order' ? "current orders" : "new order";
+  let text = "";
+  let route = "";
 
+  if (location.pathname === '/new-order' || location.pathname === '/current-orders') {
+    text = pathname === '/new-order' ? "current orders" : "new order";
+    route = pathname === '/new-order' ? "/current-orders" : "/new-order"; 
+  } else if (location.pathname === '/users' || location.pathname === '/products') {
+    text = pathname === '/users' ? "products" : "employees";
+    route = pathname === '/users' ? "/products" : "/users";
+  }
+  
   return {route, text}
 }
 
@@ -22,9 +30,8 @@ export function Header({ showButton }) {
   const clickHandler = () => {
     const details = getNavigationDetails(location.pathname);
 
-      navigate(details.route);
-      setText(details.text);
-    
+    navigate(details.route);
+    setText(details.text);  
   };
 
   return (
