@@ -28,10 +28,9 @@ export const getUsers = () => {
     });
 };
 
-export const createNewUser = (userId, email, password, role) => {
+export const createNewUser = (email, password, role) => {
   return api
     .post('/users', {
-      id: userId,
       email: email,
       password: password,
       role: role,
@@ -44,10 +43,13 @@ export const createNewUser = (userId, email, password, role) => {
     })
 };
 
-export const editUser = (uid) => {
+export const editUser = (uid, email, password, role) => {
   return api
-    .patch(`/users/${uid}`
-    )
+    .patch(`/users/${uid}`, {
+      email: email,
+      password: password,
+      role: role,
+    }    )
     .then((response) => {
       return response;
     })
