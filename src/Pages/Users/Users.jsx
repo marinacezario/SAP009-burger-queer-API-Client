@@ -1,39 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+//import { toast } from 'react-toastify';
+import { getUsers } from '../../api/users';
 
 import { Header } from '../../Components/Header/Header';
+import { RenderItems } from '../../Components/RenderItems/RenderItems';
 
 //import styles from './Users.module.css';
 
 export function Users (){ 
 
     const [listUsers, setListUsers] = useState([])
-    const [listProducts, setListProducts] = useState([])
 
     useEffect(() => {
-        fetchItems();
+        fetchUsers();
       }, []);
     
     useEffect(() => {
-    fetchItems();
-    }, [listUsers, listProducts]);
+        fetchUsers();
+    }, [listUsers]);
 
-    const fetchItems = () => {
-    getOrders()
+    const fetchUsers = () => {
+    getUsers()
         .then((response) => {
-        const ordersData = response.data;
-        const pending = ordersData.filter((order) => order.status === 'pending');
-        const preparing = ordersData.filter((order) => order.status === 'preparing');
-        const ready = ordersData.filter((order) => order.status === 'ready');
-        setPendingOrder(pending);
-        setPreparing(preparing);
-        setReadyOrders(ready);
+        const userData = response.data;
+        setListUsers(userData);
         })
         .catch((error) => {
-        console.error('Error fetching orders:', error);
+        console.error('Error fetching users:', error);
         });
     };
 
-    const handleEdit = async (orderId, changeStatus) => {
+/*     const handleEdit = async (orderId, changeStatus) => {
         try {
             const statusUpdated = await updateStatus(orderId, changeStatus)
 
@@ -61,11 +58,12 @@ export function Users (){
         } catch (error) {
             toast.error(error.message)
         }
-    }
+    } */
     return(
         <>
             <Header showButton/>
             <h2>Users</h2>
+            <RenderItems />
         </>
     )
 }
