@@ -39,10 +39,8 @@ export function Form() {
       return;
     }
 
-    // console.log(error);
     handleSubmitForm(email, password)
       .then((response) => {
-        // console.log(email);
         console.log(response);
         setItem('token', response.data.accessToken);
         setItem('userId', response.data.user.id)

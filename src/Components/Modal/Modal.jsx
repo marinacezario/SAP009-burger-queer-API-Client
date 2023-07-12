@@ -4,33 +4,30 @@ import ReactModal from "react-modal";
 import styles from "./Modal.module.css";
 import { Button } from "../Button/Button";
 
-//PAREI DE MEXER PORQUE NÃO ESTÁ FICANDO FLEXÍVEL PARA PRODUCTS E USERS
-//PRECISO VER SE FAÇO 4 CONDICIONAIS RELACIONADAS À PROPS
-//OU SE DÁ PRA DEIXAR O EDITMODE E O DELETEMODE MAIS GENÉRICOS 
-
-export function Modal(
-    accessibilityLabel,
+export function Modal({
     modalTitle,
+    isOpen,
     editMode,
     editFields,
     handleSaveBtn,
     deleteMode,
     deleteFields,
     handleConfirmDeteleBtn
-    ) {
+    }) {
     ReactModal.setAppElement('#root');
     
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    
+    console.log(editMode)
     const closeModal = () => {
         setIsModalOpen(false);
     }
 
     return (
         <ReactModal
-            isOpen={isModalOpen}
+            isOpen={isOpen}
             onRequestClose={closeModal}
-            contentLabel={accessibilityLabel}
+            contentLabel="Pop Up"
             overlayClassName={styles.modal_overlay}
             className={styles.modal_content}
         >
