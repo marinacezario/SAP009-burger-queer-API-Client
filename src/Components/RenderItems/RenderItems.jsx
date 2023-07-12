@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import { AdminItem } from '../AdminItem/AdminItem';
 
-import styles from './RenderOrders.module.css';
+// import styles from './RenderOrders.module.css';
 
 export function RenderItems ({
     sectionTitle,
@@ -18,7 +18,7 @@ export function RenderItems ({
         <section className={styles.list_items}>
             <h2 className={styles.section_title}>{sectionTitle}</h2>
             <div className={styles.wrap_items}>
-                {listToBeRendered === 'users' && listUsers.map((user) => (
+                {listToBeRendered} === 'users' && listUsers.map((user) => (
                     <AdminItem 
                         key={user.id}
                         user
@@ -27,7 +27,7 @@ export function RenderItems ({
                         handleEdit={handleEdit}
                         handleDelete={handleDelete}
                     />
-                ))}
+                ))  
                 {listToBeRendered === 'products' && listProducts.map((product) => (
                     <AdminItem 
                     key={product.id}
