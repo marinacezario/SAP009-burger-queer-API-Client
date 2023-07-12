@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import { AdminItem } from '../AdminItem/AdminItem';
 
-import styles from './RenderOrders.module.css';
+// import styles from './RenderOrders.module.css';
 
 export function RenderItems ({
     sectionTitle,

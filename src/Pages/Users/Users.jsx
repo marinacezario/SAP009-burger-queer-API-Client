@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { getUsers, deleteUser, editUser } from '../../api/users';
+
 
 import { Header } from '../../Components/Header/Header';
-import { deleteUser, editUser } from '../../api/users';
+import { RenderItems } from '../../Components/RenderItems/RenderItems';
 import { Input } from '../../Components/Input/Input';
 
 import styles from './Users.module.css';
@@ -20,25 +22,21 @@ export function Users (){
 
     useEffect(() => {
         fetchUsers();
+        fetchUsers();
       }, []);
     
     useEffect(() => {
-    fetchUsers();
+        fetchUsers();
     }, [listUsers]);
 
     const fetchUsers = () => {
-    getOrders()
+    getUsers()
         .then((response) => {
-        const ordersData = response.data;
-        const pending = ordersData.filter((order) => order.status === 'pending');
-        const preparing = ordersData.filter((order) => order.status === 'preparing');
-        const ready = ordersData.filter((order) => order.status === 'ready');
-        setPendingOrder(pending);
-        setPreparing(preparing);
-        setReadyOrders(ready);
+        const userData = response.data;
+        setListUsers(userData);
         })
         .catch((error) => {
-        console.error('Error fetching orders:', error);
+        console.error('Error fetching users:', error);
         });
     };
 
@@ -89,7 +87,7 @@ export function Users (){
         } catch (error) {
             toast.error(error.message)
         }
-    }
+    } */
     return(
         <>
             <Header showButton/>
