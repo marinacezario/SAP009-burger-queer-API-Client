@@ -34,7 +34,7 @@ export function Menu({handleSelectedProducts}) {
           value="breakfast"
           className={styles.menu_btn}
           data-testid="breakfast-button"
-          onClick={() => handleButtonClick("Breakfast")}
+          onClick={() => handleButtonClick("breakfast")}
         >
           breakfast
         </Button>
@@ -44,7 +44,7 @@ export function Menu({handleSelectedProducts}) {
           value="diner"
           className={styles.menu_btn}
           data-testid="diner-button"
-          onClick={() => handleButtonClick("Diner")}
+          onClick={() => handleButtonClick("diner")}
         >
           diner
         </Button>
