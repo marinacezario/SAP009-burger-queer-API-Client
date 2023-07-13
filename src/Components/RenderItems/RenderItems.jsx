@@ -130,9 +130,10 @@ export function RenderItems({
                   data-testid="price-input"
                   className={styles.inputs}
                 />
-                <div>
+                <div className={styles.select_area}>
                   <label>Type:</label>
                   <select
+                    className={styles.select}
                     name="select-type"
                     id="select-type"
                     value={type}

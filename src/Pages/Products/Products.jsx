@@ -48,13 +48,16 @@ export function Products() {
     }
 
     if (price === "") {
-      toast.error("Please enter a password.");
-      throw new Error("Please enter a password.");
+      toast.error("Please enter a price.");
+      throw new Error("Please enter a price.");
+    } else if (isNaN(parseFloat(price))) {
+      toast.error("Please enter a valid price.");
+      throw new Error("Please enter a valid price.");
     }
 
     if (type === "") {
-      toast.error("Please select a row.");
-      throw new Error("Please select a row.");
+      toast.error("Please select a type.");
+      throw new Error("Please select a type.");
     }
   };
 

@@ -57,8 +57,8 @@ export function Users() {
 
     //talvez precise de return boolean
     if (role === "") {
-      toast.error("Please select a row.");
-      throw new Error("Please select a row.");
+      toast.error("Please select a role.");
+      throw new Error("Please select a role.");
     }
   };
 
@@ -214,7 +214,7 @@ export function Users() {
         }
         handleSaveBtn={(e) =>
           handleEdit(e, selectedUser.id, email, password, role)
-        }
+        }Breakfast
       />
 
       <Modal
