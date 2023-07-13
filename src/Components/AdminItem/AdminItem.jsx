@@ -14,46 +14,48 @@ export function AdminItem({
   productType,
   handleEdit,
   handleDelete
-  }) {
+}) {
 
   return (
     <div className={styles.item}>
-      
-        {user && (
-            <div className={styles.info}>
-                <h2>Email: {userEmail}</h2>
-                <h2>Role: {userRole}</h2>
-            </div>
-        )}
-        {product && (
-            <div className={styles.info}>
-                <h2>Name: {productName}</h2>
-                <h2>Price: {productPrice}</h2>
-                <h2>Type: {productType}</h2>
-            </div>
-        )}
 
-      <Button
-        id="edit-button"
-        type="button"
-        value="edit-item"
-        className={styles.item_btn}
-        data-testid="edit-button"
-        onClick={handleEdit}
-      >
-        edit
-      </Button>
+      {user && (
+        <div className={styles.info}>
+          <h2>Email: {userEmail}</h2>
+          <h2>Role: {userRole}</h2>
+        </div>
+      )}
+      {product && (
+        <div className={styles.info}>
+          <h2>Name: {productName}</h2>
+          <h2>Price: {productPrice}</h2>
+          <h2>Type: {productType}</h2>
+        </div>
+      )}
 
-      <Button
-        id="delete-button"
-        type="button"
-        value="delete-item"
-        className={styles.item_btn}
-        data-testid="delete-button"
-        onClick={handleDelete}
-      >
-        delete
-      </Button>
+      <div className={styles.action_btn}>
+        <Button
+          id="edit-button"
+          type="button"
+          value="edit-item"
+          className={styles.item_btn}
+          data-testid="edit-button"
+          onClick={handleEdit}
+        >
+          edit
+        </Button>
+
+        <Button
+          id="delete-button"
+          type="button"
+          value="delete-item"
+          className={styles.item_btn}
+          data-testid="delete-button"
+          onClick={handleDelete}
+        >
+          delete
+        </Button>
+      </div>
     </div>
   );
 }
