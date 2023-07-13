@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { getUsers, deleteUser, editUser } from '../../api/users';
+import { getUsers, deleteUser, editUser, createNewUser } from '../../api/users';
 
 
 import { Header } from '../../Components/Header/Header';
@@ -14,15 +14,16 @@ import styles from './Users.module.css';
 export function Users() {
 
     const [listUsers, setListUsers] = useState([])
-    const [isModalOpen, setIsModalOpen] = useState({isOpen: false, type:""});
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('')
 
-    // useEffect(() => {
-    //     fetchUsers();
-    // }, [listUsers]);
+    useEffect(() => {
+        fetchUsers();
+    }, [listUsers]);
 
     const fetchUsers = () => {
         getUsers()
@@ -35,14 +36,62 @@ export function Users() {
             });
     };
 
-    const openModal = (user, type) => {
+    const handleCreateUser = async (e) => {
+        e.preventDefault()
 
-        setSelectedUser(user)
-        setIsModalOpen({isOpen:true, type:type});
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!email) {
+            toast.error('Please, insert an email!')
+            throw new Error('Please, insert an email!')
+        } else if (!emailRegex.test(email)) {
+            toast.error("Please enter a valid email address.")
+            throw new Error("Please enter a valid email address.")
+        }
+
+        if (!password) {
+            toast.error("Please enter a password.")
+            throw new Error("Please enter a password.")
+        } else if (password.length < 6) {
+            toast.error("Password should have at least 6 characters.")
+            throw new Error("Password should have at least 6 characters.")
+        }
+
+        try {
+            const userCreated = await createNewUser(email, password, role)
+            if (userCreated.status === 201) {
+                toast.success('Employee Added!');
+                setEmail('');
+                setPassword('');
+                setRole('');
+                fetchUsers();
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
     }
 
-    const closeModal = () => {
-        setIsModalOpen(false);
+    const openEditModal = (user) => {
+
+        setSelectedUser(user);
+        setEmail(user.email);
+        setPassword(user.password);
+        setRole(user.role);
+        setIsEditModalOpen(true);
+    }
+
+    const closeEditModal = () => {
+        setIsEditModalOpen(false);
+    }
+
+    const openDeleteModal = (user) => {
+
+        setSelectedUser(user)
+        setIsDeleteModalOpen(true);
+    }
+
+    const closeDeleteModal = () => {
+        setIsDeleteModalOpen(false);
     }
 
     const handleEdit = async (e, uid, updatedEmail, updatedPassword, updatedRole) => {
@@ -72,9 +121,9 @@ export function Users() {
 
             if (updateUser.status === 200) {
 
-                toast.success('Employee Data Updated!')
+                toast.success('Employee Data Updated!');
                 fetchUsers();
-                closeModal();
+                closeEditModal();
 
             }
         } catch (error) {
@@ -90,7 +139,7 @@ export function Users() {
             if (userDeleted.status === 200) {
                 toast.success('Employee Deleted!')
                 fetchUsers();
-                closeModal();
+                closeDeleteModal();
             }
         } catch (error) {
             toast.error(error.message)
@@ -108,27 +157,34 @@ export function Users() {
                                 user
                                 userEmail={user.email}
                                 userRole={user.role}
-                                handleEdit={() => openModal(user, 'edit')}
-                                handleDelete={() => openModal(user, 'delete')}
+                                handleEdit={() => openEditModal(user)}
+                                handleDelete={() => openDeleteModal(user)}
                             />
 
                         </li>
                     ))
                 }
-                fetchItems={() => fetchUsers()}
-            // addItem
+                user
+                email={email}
+                password={password}
+                role={role}
+                onInputChange={(event) => setEmail(event.target.value)}
+                onPasswordChange={(event) => setPassword(event.target.value)}
+                onSelectChange={option => setRole(option.target.value)}
+                handleCreateItem={(e) => handleCreateUser(e)}
             />
             <Modal
                 modalTitle="EDIT EMPLOYEE"
-                isOpen={isModalOpen.isOpen}
-                editMode={isModalOpen.type === "edit"}
+                isOpen={isEditModalOpen}
+                closeModal={closeEditModal}
+                editMode
                 editFields={
                     <>
                         <Input
                             id="email-input"
                             type="email"
                             placeholder="Email"
-                            value={selectedUser.email}
+                            value={email}
                             onChange={(event) => setEmail(event.target.value)}
                             data-testid="email-input"
                             className={styles.inputs}
@@ -137,7 +193,7 @@ export function Users() {
                             id="password-input"
                             type="password"
                             placeholder="Password"
-                            value={selectedUser.password}
+                            value={password}
                             onChange={(event) => setPassword(event.target.value)}
                             data-testid="password-input"
                             className={styles.inputs}
@@ -153,23 +209,20 @@ export function Users() {
                         </div>
                     </>
                 }
-                handleSaveBtn={() => handleEdit(selectedUser.id, email, password, role)}
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
+                handleSaveBtn={(e) => handleEdit(e, selectedUser.id, email, password, role)}
             />
 
             <Modal
                 modalTitle="DELETE EMPLOYEE ?"
-                isOpen={isModalOpen.isOpen}
-                deleteMode={isModalOpen.type === "delete"}
+                isOpen={isDeleteModalOpen}
+                closeModal={closeDeleteModal}
+                deleteMode
                 deleteFields={
                     <>
                         {selectedUser.email}
                     </>
                 }
-                handleConfirmDeteleBtn={() => handleDelete(selectedUser.id)}
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
+                handleConfirmDeteleBtn={(e) => handleDelete(e, selectedUser.id)}
             />
         </>
     )

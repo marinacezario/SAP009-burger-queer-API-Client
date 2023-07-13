@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactModal from "react-modal";
 
 import styles from "./Modal.module.css";
@@ -7,21 +7,15 @@ import { Button } from "../Button/Button";
 export function Modal({
     modalTitle,
     isOpen,
+    closeModal,
     editMode,
     editFields,
     handleSaveBtn,
     deleteMode,
     deleteFields,
     handleConfirmDeteleBtn
-    }) {
+}) {
     ReactModal.setAppElement('#root');
-    
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    
-    console.log(editMode)
-    const closeModal = () => {
-        setIsModalOpen(false);
-    }
 
     return (
         <ReactModal
@@ -31,67 +25,67 @@ export function Modal({
             overlayClassName={styles.modal_overlay}
             className={styles.modal_content}
         >
-          {editMode && (
-            <>
-                <h1>{modalTitle}</h1>
-                {editFields}
-                <div>
-                    <Button
-                        id="cancel-button"
-                        type="button"
-                        value="cancel"
-                        className={styles.modal_btn}
-                        data-testid="cancel-button"
-                        onClick={closeModal}
-                    >
-                        cancel
-                    </Button>
-                    <Button
-                        id="save-button"
-                        type="submit"
-                        value="save"
-                        className={styles.modal_btn}
-                        data-testid="save-button"
-                        onClick={handleSaveBtn}
-                    >
-                        save
-                    </Button>
-                </div>
-            </>
-          )} 
-          {deleteMode && (
-            <>
-                <h1>{modalTitle}</h1>
-                {deleteFields}
-                <div>
-                <Button
-                    id="confirm-delete-button"
-                    type="submit"
-                    value="confirm-delete"
-                    className={styles.modal_btn}
-                    data-testid="confirm-delete-button"
-                    onClick={handleConfirmDeteleBtn}
-                >
-                    yes
-                </Button>
-                <Button
-                    id="cancel-delete-button"
-                    type="button"
-                    value="cancel-delete"
-                    className={styles.modal_btn}
-                    data-testid="cancel-delete-button"
-                    onClick={closeModal}
-                >
-                    no
-                </Button>
-                </div>
-            </>
-          )}  
+            {editMode && (
+                <>
+                    <h1>{modalTitle}</h1>
+                    {editFields}
+                    <div>
+                        <Button
+                            id="cancel-button"
+                            type="button"
+                            value="cancel"
+                            className={styles.modal_btn}
+                            data-testid="cancel-button"
+                            onClick={closeModal}
+                        >
+                            cancel
+                        </Button>
+                        <Button
+                            id="save-button"
+                            type="submit"
+                            value="save"
+                            className={styles.modal_btn}
+                            data-testid="save-button"
+                            onClick={handleSaveBtn}
+                        >
+                            save
+                        </Button>
+                    </div>
+                </>
+            )}
+            {deleteMode && (
+                <>
+                    <h1>{modalTitle}</h1>
+                    {deleteFields}
+                    <div>
+                        <Button
+                            id="confirm-delete-button"
+                            type="submit"
+                            value="confirm-delete"
+                            className={styles.modal_btn}
+                            data-testid="confirm-delete-button"
+                            onClick={handleConfirmDeteleBtn}
+                        >
+                            yes
+                        </Button>
+                        <Button
+                            id="cancel-delete-button"
+                            type="button"
+                            value="cancel-delete"
+                            className={styles.modal_btn}
+                            data-testid="cancel-delete-button"
+                            onClick={closeModal}
+                        >
+                            no
+                        </Button>
+                    </div>
+                </>
+            )}
         </ReactModal>
     )
 }
 
-                // <Input 
+                // <Input
                 //     id="email-input"
                 //     type="email"
                 //     placeholder="Email"
