@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button } from "../Button/Button";
 
-import styles from "./Order.module.css";
+import styles from "./AdminItem.module.css";
 
 export function AdminItem({
   user,

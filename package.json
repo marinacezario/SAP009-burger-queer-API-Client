@@ -18,7 +18,8 @@
     "jest-localstorage-mock": "^2.4.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.1",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.11.2",
     "react-toastify": "^9.1.3"
   },
   "devDependencies": { 

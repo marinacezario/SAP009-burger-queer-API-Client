@@ -39,10 +39,8 @@ export function Form() {
       return;
     }
 
-    // console.log(error);
     handleSubmitForm(email, password)
       .then((response) => {
-        // console.log(email);
         console.log(response);
         setItem('token', response.data.accessToken);
         setItem('userId', response.data.user.id)
@@ -80,7 +78,7 @@ export function Form() {
       />
       <Input
         type="password"
-        placeholder="Senha"
+        placeholder="Password"
         value={password}
         onChange={(event) => setPassword(event.target.value)}
         data-testid="password-input"
