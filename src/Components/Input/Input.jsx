@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export function Input({type, value, onChange, placeholder, className}) {
+export function Input({ type, value, onChange, placeholder, className }) {
   return (
     <input
       type={type}

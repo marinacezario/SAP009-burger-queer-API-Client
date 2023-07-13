@@ -1,9 +1,8 @@
 import { api } from "./api";
 
 export const getProducts = () => {
-    return api
-    .get('/products'
-    )
+  return api
+    .get("/products")
     .then((response) => {
       return response;
     })
@@ -14,18 +13,18 @@ export const getProducts = () => {
 
 export const createNewProducts = (name, price, type, dateEntry) => {
   return api
-    .post('/products', {
+    .post("/products", {
       name: name,
       price: price,
       type: type,
-      dateEntry: dateEntry
+      dateEntry: dateEntry,
     })
     .then((response) => {
       return response;
     })
     .catch((error) => {
       throw error;
-    })
+    });
 };
 
 export const editProduct = (uid, name, price, type, dateEntry) => {
@@ -34,24 +33,23 @@ export const editProduct = (uid, name, price, type, dateEntry) => {
       name: name,
       price: price,
       type: type,
-      dateEntry: dateEntry
+      dateEntry: dateEntry,
     })
     .then((response) => {
       return response;
     })
     .catch((error) => {
       throw error;
-    })
+    });
 };
 
 export const deleteProduct = (uid) => {
   return api
-  .delete(`/products/${uid}`
-  )
-  .then((response) => {
-    return response;
-  })
-  .catch((error) => {
-    throw error;
-  })
+    .delete(`/products/${uid}`)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      throw error;
+    });
 };

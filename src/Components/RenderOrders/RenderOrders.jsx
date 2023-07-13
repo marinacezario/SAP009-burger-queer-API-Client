@@ -1,135 +1,142 @@
-import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { getOrders, updateStatus } from "../../api/orders";
 
-import { Order } from '../../Components/Order/Order';
+import { Order } from "../../Components/Order/Order";
 
-import styles from './RenderOrders.module.css';
+import styles from "./RenderOrders.module.css";
 
-export function RenderOrders ({
-    sectionTitle,
-    stateToBeRendered, 
-    borderColor, 
-    showButton, 
-    titleBtn, 
-    changeStatusTo
-}){
+export function RenderOrders({
+  sectionTitle,
+  stateToBeRendered,
+  borderColor,
+  showButton,
+  titleBtn,
+  changeStatusTo,
+}) {
+  const [pendingOrders, setPendingOrder] = useState([]);
+  const [preparing, setPreparing] = useState([]);
+  const [readyOrders, setReadyOrders] = useState([]);
 
-    const [pendingOrders, setPendingOrder] = useState([])
-    const [preparing, setPreparing] = useState([])
-    const [readyOrders, setReadyOrders] = useState([])
-
-    useEffect(() => {
-        fetchOrders();
-      }, []);
-    
-    useEffect(() => {
+  useEffect(() => {
     fetchOrders();
-    }, [pendingOrders, preparing, readyOrders]);
+  }, []);
 
-    const fetchOrders = () => {
+  useEffect(() => {
+    fetchOrders();
+  }, [pendingOrders, preparing, readyOrders]);
+
+  const fetchOrders = () => {
     getOrders()
-        .then((response) => {
+      .then((response) => {
         const ordersData = response.data;
-        const pending = ordersData.filter((order) => order.status === 'pending');
-        const preparing = ordersData.filter((order) => order.status === 'preparing');
-        const ready = ordersData.filter((order) => order.status === 'ready');
+        const pending = ordersData.filter(
+          (order) => order.status === "pending"
+        );
+        const preparing = ordersData.filter(
+          (order) => order.status === "preparing"
+        );
+        const ready = ordersData.filter((order) => order.status === "ready");
         setPendingOrder(pending);
         setPreparing(preparing);
         setReadyOrders(ready);
-        })
-        .catch((error) => {
-        console.error('Error fetching orders:', error);
-        });
-    };
+      })
+      .catch((error) => {
+        console.error("Error fetching orders:", error);
+      });
+  };
 
-    const handleStatusChange = async (orderId, changeStatus) => {
-        try {
-            const statusUpdated = await updateStatus(orderId, changeStatus)
+  const handleStatusChange = async (orderId, changeStatus) => {
+    try {
+      const statusUpdated = await updateStatus(orderId, changeStatus);
 
-            if (statusUpdated.status === 200) {
+      if (statusUpdated.status === 200) {
+        if (changeStatus === "preparing") {
+          toast.success("Preparing...");
+        } else if (changeStatus === "ready") {
+          toast.success("Sent to waiter!");
+        } else if (changeStatus === "delivered") {
+          toast.success("Order delivered!");
+        }
 
-                if ( changeStatus === 'preparing') {
-                    toast.success('Preparing...')
-                } else if ( changeStatus === 'ready') {
-                    toast.success('Sent to waiter!')
-                } else if ( changeStatus === 'delivered' ) {
-                    toast.success('Order delivered!')
-                }
+        fetchOrders();
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
-                fetchOrders();
-                
-            }
-        } catch (error) {
-            toast.error(error.message)
-        }        
-    };
-
-    return (
-        <section className={styles.pending_orders}>
-            <h2 className={styles.section_title}>{sectionTitle}</h2>
-            <div className={styles.wrap_orders}>
-                {stateToBeRendered === 'pending' && pendingOrders.map((order) => (
-                    <Order
-                        className={styles.order_component}
-                        key={order.id} 
-                        clientName={order.client} 
-                        date={order.dateEntry} 
-                        products={order.products.map((product) => (
-                            <li key={product.product.id} className={styles.product}>
-                                <p className={styles.product_p}>{product.qty}</p>
-                                <p className={styles.product_p}>{product.product.name}</p>
-                            </li>
-                        ))}
-                        status={order.status}
-                        borderColor={borderColor}
-                        showButton={showButton}
-                        titleBtn={titleBtn}
-                        onStatusChange={() => handleStatusChange(order.id, {changeStatusTo})
-                        }
-                    />
-                ))}
-                {stateToBeRendered === 'preparing' && preparing.map((order) => (
-                    <Order
-                        className={styles.order_component}
-                        key={order.id} 
-                        clientName={order.client} 
-                        date={order.dateEntry} 
-                        products={order.products.map((product) => (
-                            <li key={product.product.id} className={styles.product}>
-                                <p className={styles.product_p}>{product.qty}</p>
-                                <p className={styles.product_p}>{product.product.name}</p>
-                            </li>
-                        ))}
-                        status={order.status}
-                        borderColor={borderColor}
-                        showButton={showButton}
-                        titleBtn={titleBtn}
-                        onStatusChange={() => handleStatusChange(order.id, {changeStatusTo})
-                        }
-                    />
-                ))}
-                {stateToBeRendered === 'ready' && readyOrders.map((order) => (
-                    <Order
-                        className={styles.order_component}
-                        key={order.id} 
-                        clientName={order.client} 
-                        date={order.dateEntry} 
-                        products={order.products.map((product) => (
-                            <li key={product.product.id} className={styles.product}>
-                                <p className={styles.product_p}>{product.qty}</p>
-                                <p className={styles.product_p}>{product.product.name}</p>
-                            </li>
-                        ))}
-                        status={order.status}
-                        borderColor={borderColor}
-                        showButton={showButton}
-                        titleBtn={titleBtn}
-                        onStatusChange={() => handleStatusChange(order.id, {changeStatusTo})
-                        }
-                    />
-                ))}
-            </div>
-        </section>
-    );
+  return (
+    <section className={styles.pending_orders}>
+      <h2 className={styles.section_title}>{sectionTitle}</h2>
+      <div className={styles.wrap_orders}>
+        {stateToBeRendered === "pending" &&
+          pendingOrders.map((order) => (
+            <Order
+              className={styles.order_component}
+              key={order.id}
+              clientName={order.client}
+              date={order.dateEntry}
+              products={order.products.map((product) => (
+                <li key={product.product.id} className={styles.product}>
+                  <p className={styles.product_p}>{product.qty}</p>
+                  <p className={styles.product_p}>{product.product.name}</p>
+                </li>
+              ))}
+              status={order.status}
+              borderColor={borderColor}
+              showButton={showButton}
+              titleBtn={titleBtn}
+              onStatusChange={() =>
+                handleStatusChange(order.id, { changeStatusTo })
+              }
+            />
+          ))}
+        {stateToBeRendered === "preparing" &&
+          preparing.map((order) => (
+            <Order
+              className={styles.order_component}
+              key={order.id}
+              clientName={order.client}
+              date={order.dateEntry}
+              products={order.products.map((product) => (
+                <li key={product.product.id} className={styles.product}>
+                  <p className={styles.product_p}>{product.qty}</p>
+                  <p className={styles.product_p}>{product.product.name}</p>
+                </li>
+              ))}
+              status={order.status}
+              borderColor={borderColor}
+              showButton={showButton}
+              titleBtn={titleBtn}
+              onStatusChange={() =>
+                handleStatusChange(order.id, { changeStatusTo })
+              }
+            />
+          ))}
+        {stateToBeRendered === "ready" &&
+          readyOrders.map((order) => (
+            <Order
+              className={styles.order_component}
+              key={order.id}
+              clientName={order.client}
+              date={order.dateEntry}
+              products={order.products.map((product) => (
+                <li key={product.product.id} className={styles.product}>
+                  <p className={styles.product_p}>{product.qty}</p>
+                  <p className={styles.product_p}>{product.product.name}</p>
+                </li>
+              ))}
+              status={order.status}
+              borderColor={borderColor}
+              showButton={showButton}
+              titleBtn={titleBtn}
+              onStatusChange={() =>
+                handleStatusChange(order.id, { changeStatusTo })
+              }
+            />
+          ))}
+      </div>
+    </section>
+  );
 }

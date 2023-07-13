@@ -13,7 +13,6 @@ describe("Input component", () => {
     expect(email_input).toBeInTheDocument();
     expect(email_input).toMatchSnapshot();
     expect(email_input).toHaveAttribute("type", "email");
- 
   });
   test("calls onChange", () => {
     render(<Input type="email" placeholder="Email" onChange={mockOnChange} />);

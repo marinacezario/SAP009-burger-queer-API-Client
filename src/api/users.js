@@ -1,25 +1,22 @@
-import { api } from './api';
+import { api } from "./api";
 
 export const handleSubmitForm = (email, password) => {
-    
-  return api.post('/login', {
-    email: email,
-    password: password
-  })
+  return api
+    .post("/login", {
+      email: email,
+      password: password,
+    })
     .then(function (response) {
-   
       return response;
     })
-    .catch(function (error) {    
-    
-    throw error;
+    .catch(function (error) {
+      throw error;
     });
 };
 
 export const getUsers = () => {
   return api
-    .get('/users'
-    )
+    .get("/users")
     .then((response) => {
       return response;
     })
@@ -30,7 +27,7 @@ export const getUsers = () => {
 
 export const createNewUser = (email, password, role) => {
   return api
-    .post('/users', {
+    .post("/users", {
       email: email,
       password: password,
       role: role,
@@ -40,7 +37,7 @@ export const createNewUser = (email, password, role) => {
     })
     .catch((error) => {
       throw error;
-    })
+    });
 };
 
 export const editUser = (uid, email, password, role) => {
@@ -49,23 +46,22 @@ export const editUser = (uid, email, password, role) => {
       email: email,
       password: password,
       role: role,
-    }    )
+    })
     .then((response) => {
       return response;
     })
     .catch((error) => {
       throw error;
-    })
+    });
 };
 
 export const deleteUser = (uid) => {
   return api
-  .delete(`/users/${uid}`
-  )
-  .then((response) => {
-    return response;
-  })
-  .catch((error) => {
-    throw error;
-  })
+    .delete(`/users/${uid}`)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      throw error;
+    });
 };

@@ -13,12 +13,10 @@ export function AdminItem({
   productPrice,
   productType,
   handleEdit,
-  handleDelete
+  handleDelete,
 }) {
-
   return (
     <div className={styles.item}>
-
       {user && (
         <div className={styles.info}>
           <h2>Email: {userEmail}</h2>

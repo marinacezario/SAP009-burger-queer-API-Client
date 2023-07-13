@@ -1,59 +1,59 @@
 .order {
-    border-radius: 15%;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-    background: #4B4447;
+  border-radius: 15%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  background: #4b4447;
 }
 
 .pink_border {
-    border: 2px solid #E5007C;
+  border: 2px solid #e5007c;
 }
 
 .blue_border {
-    border: 2px solid #59C9C5;
+  border: 2px solid #59c9c5;
 }
 
 .yellow_border {
-    border: 2px solid #D1AC60;
+  border: 2px solid #d1ac60;
 }
 
 .info {
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-    width: 90%;
-    margin-top: 2rem;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  width: 90%;
+  margin-top: 2rem;
 }
 
 .products {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    width: 90%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 90%;
 }
 
 .order_btn {
-    width: 12rem;
-    height: 5rem;
-    border-radius: 15px;
-    background-color: #d1ac60;
-    color: black;
-    font-size: 1.2em;
-    margin: 2vh;
+  width: 12rem;
+  height: 5rem;
+  border-radius: 15px;
+  background-color: #d1ac60;
+  color: black;
+  font-size: 1.2em;
+  margin: 2vh;
 }
 
 @media screen and (min-width: 600px) {
-    .order {
-        width: 50%;
-    }
+  .order {
+    width: 50%;
+  }
 }
 
 @media screen and (min-width: 1000px) {
-    .order {
-        width: 45%;
-    }
+  .order {
+    width: 45%;
+  }
 }

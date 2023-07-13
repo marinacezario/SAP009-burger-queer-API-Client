@@ -12,22 +12,21 @@ export function Order({
   status,
   borderColor,
   onStatusChange,
-  showButton
-  }) {
+  showButton,
+}) {
+  let setBorderColor = "";
 
-    let setBorderColor = '';
+  if (borderColor === "pink") {
+    setBorderColor = styles.pink_border;
+  }
 
-    if (borderColor === 'pink') {
-      setBorderColor = styles.pink_border
-    }
-    
-    if (borderColor === 'blue') {
-      setBorderColor = styles.blue_border
-    }
+  if (borderColor === "blue") {
+    setBorderColor = styles.blue_border;
+  }
 
-    if (borderColor === 'yellow') {
-      setBorderColor = styles.yellow_border
-    }
+  if (borderColor === "yellow") {
+    setBorderColor = styles.yellow_border;
+  }
 
   return (
     <div className={`${styles.order} ${setBorderColor}`}>
@@ -42,17 +41,18 @@ export function Order({
         {products}
       </ul>
 
-
-      {showButton && (<Button
-        id="ready-button"
-        type="button"
-        value={status}
-        className={styles.order_btn}
-        data-testid="submit-button"
-        onClick={() => onStatusChange(status)}
-      >
-        {titleBtn}
-      </Button>)}
+      {showButton && (
+        <Button
+          id="ready-button"
+          type="button"
+          value={status}
+          className={styles.order_btn}
+          data-testid="submit-button"
+          onClick={() => onStatusChange(status)}
+        >
+          {titleBtn}
+        </Button>
+      )}
     </div>
   );
 }

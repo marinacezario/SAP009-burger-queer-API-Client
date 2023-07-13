@@ -14,7 +14,7 @@ describe("Button component", () => {
 
     expect(button).toBeInTheDocument();
     expect(button).toMatchSnapshot();
-    expect(button).toHaveAttribute('type', 'submit');
-    expect(button).toHaveAttribute('value', 'login');
+    expect(button).toHaveAttribute("type", "submit");
+    expect(button).toHaveAttribute("value", "login");
   });
 });
