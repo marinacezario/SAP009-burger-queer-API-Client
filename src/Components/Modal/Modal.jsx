@@ -15,6 +15,7 @@ export function Modal({
   deleteFields,
   handleConfirmDeteleBtn,
 }) {
+  
   ReactModal.setAppElement("#root");
 
   return (
@@ -27,9 +28,9 @@ export function Modal({
     >
       {editMode && (
         <>
-          <h1>{modalTitle}</h1>
+          <h1 className={styles.title}>{modalTitle}</h1>
           {editFields}
-          <div>
+          <div className={styles.actions}>
             <Button
               id="cancel-button"
               type="button"
@@ -55,9 +56,9 @@ export function Modal({
       )}
       {deleteMode && (
         <>
-          <h1>{modalTitle}</h1>
+          <h1 className={styles.title}>{modalTitle}</h1>
           {deleteFields}
-          <div>
+          <div className={styles.actions}>
             <Button
               id="confirm-delete-button"
               type="submit"
@@ -84,30 +85,3 @@ export function Modal({
     </ReactModal>
   );
 }
-
-// <Input
-//     id="email-input"
-//     type="email"
-//     placeholder="Email"
-//     value={email}
-//     onChange={(event) => setEmail(event.target.value)}
-//     data-testid="email-input"
-//     className={styles.inputs}
-// />
-// <Input
-//     id="password-input"
-//     type="password"
-//     placeholder="Password"
-//     value={password}
-//     onChange={(event) => setPassword(event.target.value)}
-//     data-testid="password-input"
-//     className={styles.inputs}
-// />
-// <div>
-//     <p>Role:</p>
-//     <select name="select-role" id="select-role">
-//         <option value="admin">admin</option>
-//         <option value="kitchen">kitchen</option>
-//         <option value="waiter">waiter</option>
-//     </select>
-// </div>
