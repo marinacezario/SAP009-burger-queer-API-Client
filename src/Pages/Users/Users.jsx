@@ -19,14 +19,9 @@ export function Users() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
-
   useEffect(() => {
     fetchUsers();
   }, []);
-
-/*   useEffect(() => {
-    fetchUsers();
-  }, [listUsers]); */
 
   const fetchUsers = () => {
     getUsers()
