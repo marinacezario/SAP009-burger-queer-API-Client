@@ -81,8 +81,6 @@ export function Users() {
         toast.success("Employee Added!");
         cleanState();
         fetchUsers();
-        setShowListAll(true);
-        setShowAddNew(false);
       }
     } catch (error) {
       toast.error(error.message);
@@ -178,8 +176,6 @@ export function Users() {
           onPasswordChange={(event) => setPassword(event.target.value)}
           onSelectChange={(option) => setRole(option.target.value)}
           handleCreateItem={(e) => handleCreateUser(e)}
-          setShowListAll={setShowListAll}
-          setShowAddNew={setShowAddNew}
         />
       <Modal
         modalTitle="EDIT EMPLOYEE"
