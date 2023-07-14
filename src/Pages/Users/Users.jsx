@@ -18,18 +18,21 @@ export function Users() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const [renderItemsUpdated, setRenderItemsUpdated] = useState(false);
+
 
   useEffect(() => {
     fetchUsers();
-  }, [renderItemsUpdated]);
+  }, []);
+
+/*   useEffect(() => {
+    fetchUsers();
+  }, [listUsers]); */
 
   const fetchUsers = () => {
     getUsers()
       .then((response) => {
         const userData = response.data;
         setListUsers(userData);
-        setRenderItemsUpdated(true);
       })
       .catch((error) => {
         console.error("Error fetching users:", error);
@@ -43,13 +46,13 @@ export function Users() {
       toast.error("Please, insert an email!");
       throw new Error("Please, insert an email!");
     } else if (!emailRegex.test(email)) {
-      toast.error("Please enter a valid email address.");
-      throw new Error("Please enter a valid email address.");
+      toast.error("Please, enter a valid email address.");
+      throw new Error("Please, enter a valid email address.");
     }
 
     if (!password) {
-      toast.error("Please enter a password.");
-      throw new Error("Please enter a password.");
+      toast.error("Please, enter a password.");
+      throw new Error("Please, enter a password.");
     } else if (password.length < 6) {
       toast.error("Password should have at least 6 characters.");
       throw new Error("Password should have at least 6 characters.");
@@ -57,10 +60,16 @@ export function Users() {
 
     //talvez precise de return boolean
     if (role === "") {
-      toast.error("Please select a role.");
-      throw new Error("Please select a role.");
+      toast.error("Please, select a role.");
+      throw new Error("Please, select a role.");
     }
   };
+
+  const cleanState = () => {
+    setEmail("");
+    setPassword("");
+    setRole("");
+  }
 
   const handleCreateUser = async (e) => {
     e.preventDefault();
@@ -70,11 +79,10 @@ export function Users() {
       const userCreated = await createNewUser(email, password, role);
       if (userCreated.status === 201) {
         toast.success("Employee Added!");
-        setEmail("");
-        setPassword("");
-        setRole("");
+        cleanState();
         fetchUsers();
-        setRenderItemsUpdated(true);
+        setShowListAll(true);
+        setShowAddNew(false);
       }
     } catch (error) {
       toast.error(error.message);
@@ -91,6 +99,7 @@ export function Users() {
 
   const closeEditModal = () => {
     setIsEditModalOpen(false);
+    cleanState();
   };
 
   const openDeleteModal = (user) => {
@@ -100,6 +109,7 @@ export function Users() {
 
   const closeDeleteModal = () => {
     setIsDeleteModalOpen(false);
+    cleanState();
   };
 
   const handleEdit = async (
@@ -147,7 +157,6 @@ export function Users() {
   return (
     <>
       <Header showButton />
-      {renderItemsUpdated && (
         <RenderItems
           sectionTitle="EMPLOYEES"
           listToBeRendered={listUsers.map((user) => (
@@ -169,8 +178,9 @@ export function Users() {
           onPasswordChange={(event) => setPassword(event.target.value)}
           onSelectChange={(option) => setRole(option.target.value)}
           handleCreateItem={(e) => handleCreateUser(e)}
+          setShowListAll={setShowListAll}
+          setShowAddNew={setShowAddNew}
         />
-      )}
       <Modal
         modalTitle="EDIT EMPLOYEE"
         isOpen={isEditModalOpen}
