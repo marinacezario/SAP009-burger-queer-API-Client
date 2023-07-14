@@ -18,18 +18,16 @@ export function Users() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const [renderItemsUpdated, setRenderItemsUpdated] = useState(false);
 
   useEffect(() => {
     fetchUsers();
-  }, [renderItemsUpdated]);
+  }, []);
 
   const fetchUsers = () => {
     getUsers()
       .then((response) => {
         const userData = response.data;
         setListUsers(userData);
-        setRenderItemsUpdated(true);
       })
       .catch((error) => {
         console.error("Error fetching users:", error);
@@ -74,7 +72,6 @@ export function Users() {
         setPassword("");
         setRole("");
         fetchUsers();
-        setRenderItemsUpdated(true);
       }
     } catch (error) {
       toast.error(error.message);
@@ -147,7 +144,6 @@ export function Users() {
   return (
     <>
       <Header showButton />
-      {renderItemsUpdated && (
         <RenderItems
           sectionTitle="EMPLOYEES"
           listToBeRendered={listUsers.map((user) => (
@@ -170,7 +166,6 @@ export function Users() {
           onSelectChange={(option) => setRole(option.target.value)}
           handleCreateItem={(e) => handleCreateUser(e)}
         />
-      )}
       <Modal
         modalTitle="EDIT EMPLOYEE"
         isOpen={isEditModalOpen}

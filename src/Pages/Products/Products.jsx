@@ -23,7 +23,6 @@ export function Products() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
-  const [renderItemsUpdated, setRenderItemsUpdated] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -34,7 +33,6 @@ export function Products() {
       .then((response) => {
         const productData = response.data;
         setlistProducts(productData);
-        setRenderItemsUpdated(true);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -73,7 +71,6 @@ export function Products() {
         setPrice("");
         setType("");
         fetchProducts();
-        setRenderItemsUpdated(true);
       }
     } catch (error) {
       toast.error(error.message);
@@ -146,7 +143,6 @@ export function Products() {
   return (
     <>
       <Header showButton />
-      {renderItemsUpdated && (
         <RenderItems
           sectionTitle="PRODUCTS"
           listToBeRendered={listProducts.map((product) => (
@@ -170,7 +166,6 @@ export function Products() {
           onSelectChange={(option) => setType(option.target.value)}
           handleCreateItem={(e) => handleCreateProduct(e)}
         />
-      )}
       <Modal
         modalTitle="EDIT PRODUCT"
         isOpen={isEditModalOpen}
