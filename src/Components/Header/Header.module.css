@@ -1,42 +1,40 @@
 .header_login {
-    background-color: #D1AC60;
-    width: 100vw;
-    height: 10vh;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  background-color: #d1ac60;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo_header {
-    width: 350px;
-    height: 60px;
+  width: 350px;
+  height: 60px;
 }
 
 .logo_mobile {
-    display: none;
+  display: none;
 }
 
-.orders_btn{
-    width: 14rem;
-    height: 5rem;
-    border-radius: 15px;
-    background-color: #59C9C5;
-    color: black;
-    font-size: 1.2em;
-    margin-right: 13vw;
+.orders_btn {
+  width: 14rem;
+  height: 5rem;
+  border-radius: 15px;
+  background-color: #59c9c5;
+  color: black;
+  font-size: 1.2em;
+  margin-right: 13vw;
 }
 
 @media screen and (max-width: 600px) {
-    .logo_header {
-        display: none;
-    }
+  .logo_header {
+    display: none;
+  }
 
-    .logo_mobile {
-        width: 120px;
-        height: 60px;
-        display: flex;
-    }
-
-
+  .logo_mobile {
+    width: 120px;
+    height: 60px;
+    display: flex;
+  }
 }

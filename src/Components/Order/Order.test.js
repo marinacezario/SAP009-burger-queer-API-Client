@@ -1,8 +1,7 @@
 import React from "react";
 import { render, fireEvent, queryByTestId } from "@testing-library/react";
 import { Order } from "./Order";
-import '@testing-library/jest-dom';
-
+import "@testing-library/jest-dom";
 
 // Button mock
 jest.mock("../Button/Button", () => ({

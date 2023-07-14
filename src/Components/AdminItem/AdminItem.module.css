@@ -1,32 +1,32 @@
 .item {
-    display: flex;
-    flex-direction: column;
-    width: 90vw;
-    max-width: 30em;
-    min-width: 22em;
-    background: #4B4447;
-    box-shadow: 0px 4px 4px 0px #00000040;
-    border-radius: 15px;
-    padding: 1em;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  max-width: 30em;
+  min-width: 22em;
+  background: #4b4447;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border-radius: 15px;
+  padding: 1em;
 }
 
 .info {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .action_btn {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .item_btn {
-    width: 12rem;
-    height: 5rem;
-    border-radius: 15px;
-    background-color: #d1ac60;
-    color: black;
-    font-size: 1.2em;
-    margin: 2vh;
+  width: 12rem;
+  height: 5rem;
+  border-radius: 15px;
+  background-color: #d1ac60;
+  color: black;
+  font-size: 1.2em;
+  margin: 2vh;
 }

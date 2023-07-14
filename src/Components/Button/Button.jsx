@@ -1,14 +1,24 @@
-import React from 'react';
+import React from "react";
 
-export const Button = ({ id, children, type, alt, value, className, onClick, 'data-testid': testId, ...props }) => {
+export const Button = ({
+  id,
+  children,
+  type,
+  alt,
+  value,
+  className,
+  onClick,
+  "data-testid": testId,
+  ...props
+}) => {
   return (
     <button
       id={id}
       type={type}
-      aria-label={alt} 
+      aria-label={alt}
       value={value}
       className={className}
-      onClick = {onClick}
+      onClick={onClick}
       data-testid={testId}
       {...props}
     >

@@ -7,7 +7,7 @@ import { Button } from "../../Components/Button/Button";
 //styles
 import styles from "./Menu.module.css";
 
-export function Menu({handleSelectedProducts}) {
+export function Menu({ handleSelectedProducts }) {
   const [activeButton, setActiveButton] = useState(null);
   const [products, setProducts] = useState([]);
 
@@ -16,14 +16,16 @@ export function Menu({handleSelectedProducts}) {
     getProducts()
       .then((response) => {
         // console.log(response.data)
-        setProducts(response.data)
+        setProducts(response.data);
       })
       .catch((error) => {
-        console.log(error)
-      })
+        console.log(error);
+      });
   };
 
-  const filteredProducts = products.filter((item) => item.type === activeButton);
+  const filteredProducts = products.filter(
+    (item) => item.type === activeButton
+  );
 
   return (
     <div className={styles.menu}>
@@ -34,7 +36,7 @@ export function Menu({handleSelectedProducts}) {
           value="breakfast"
           className={styles.menu_btn}
           data-testid="breakfast-button"
-          onClick={() => handleButtonClick("Breakfast")}
+          onClick={() => handleButtonClick("breakfast")}
         >
           breakfast
         </Button>
@@ -44,18 +46,18 @@ export function Menu({handleSelectedProducts}) {
           value="diner"
           className={styles.menu_btn}
           data-testid="diner-button"
-          onClick={() => handleButtonClick("Diner")}
+          onClick={() => handleButtonClick("diner")}
         >
           diner
         </Button>
       </div>
-      
+
       <ul className={styles.menu_list}>
         {filteredProducts.map((product) => (
           <li key={product.id}>
             <button
               className={styles.menu_products}
-              onClick={() => handleSelectedProducts(product)} //clickHandler é props e deve ser passado no pai 
+              onClick={() => handleSelectedProducts(product)} //clickHandler é props e deve ser passado no pai
             >
               {product.name} <br></br> R${product.price}
             </button>

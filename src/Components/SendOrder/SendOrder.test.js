@@ -1,9 +1,13 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { MemoryRouter, Router } from "react-router-dom";
-import { createMemorySource, createHistory, LocationProvider } from "@reach/router";
-import { toast } from 'react-toastify';
-import 'jest-localstorage-mock';
+import {
+  createMemorySource,
+  createHistory,
+  LocationProvider,
+} from "@reach/router";
+import { toast } from "react-toastify";
+import "jest-localstorage-mock";
 
 import { SendOrder } from "./SendOrder";
 import { createNewOrder } from "../../api/orders";
@@ -26,7 +30,7 @@ describe("SendOrder", () => {
     const renderOrderTotal = jest.fn();
     const orderResume = [];
     const name = ""; // Fornecer um nome de cliente vazio
-  
+
     const { queryByTestId, getByText } = render(
       <MemoryRouter>
         <SendOrder
@@ -36,14 +40,14 @@ describe("SendOrder", () => {
         />
       </MemoryRouter>
     );
-  
+
     fireEvent.change(queryByTestId("client-name-input"), {
       target: { value: name },
     });
     fireEvent.click(queryByTestId("submit-button"));
-  
+
     expect(toast.error).toHaveBeenCalledWith(
-      'Please, insert the name of the client'
+      "Please, insert the name of the client"
     );
     expect(toast.error).toHaveBeenCalledTimes(1);
     expect(getByText("send order")).toBeInTheDocument();
@@ -71,7 +75,7 @@ describe("SendOrder", () => {
     fireEvent.click(queryByTestId("submit-button"));
 
     expect(toast.error).toHaveBeenCalledWith(
-      'Please, choose at least 1 product'
+      "Please, choose at least 1 product"
     );
     expect(toast.error).toHaveBeenCalledTimes(1);
     expect(getByText("send order")).toBeInTheDocument();
@@ -82,7 +86,7 @@ describe("SendOrder", () => {
     const renderOrderTotal = jest.fn();
     const orderResume = [{ id: 1, name: "Product 1", price: 10 }];
     const name = "John Doe";
-    
+
     const source = createMemorySource("/current-orders");
     const history = createHistory(source);
 
@@ -105,11 +109,7 @@ describe("SendOrder", () => {
     });
     fireEvent.click(queryByTestId("submit-button"));
 
-    expect(createNewOrder).toHaveBeenCalledWith(
-      orderResume,
-      name,
-      undefined
-    );
+    expect(createNewOrder).toHaveBeenCalledWith(orderResume, name, undefined);
     expect(toast.success).toHaveBeenCalledWith("Sent to kitchen!");
     expect(toast.success).toHaveBeenCalledTimes(1);
     expect(history.location.pathname).toBe("/current-orders");

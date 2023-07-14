@@ -1,7 +1,7 @@
 :root {
   /* max-width: 1280px; */
   /* text-align: center; */
-  font-size: 62.5%;  
+  font-size: 62.5%;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -9,10 +9,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  background-color: #3F3636;
+  background-color: #3f3636;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -28,11 +28,13 @@ body {
   min-height: 100vh;
 }
 
-body, input, button {
-  font-family: 'Atkinson Hyperlegible', sans-serif;
+body,
+input,
+button {
+  font-family: "Atkinson Hyperlegible", sans-serif;
   font-size: 1.6rem;
 }
 
-h1{
+h1 {
   padding: 2rem;
 }

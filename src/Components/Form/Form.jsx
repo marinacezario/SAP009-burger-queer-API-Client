@@ -10,7 +10,7 @@ import { handleSubmitForm } from "../../api/users";
 // styles
 import styles from "./Form.module.css";
 import { errorHandler } from "../../error-handler";
-import {setItem} from '../../storage/localStorage';
+import { setItem } from "../../storage/localStorage";
 
 export function Form() {
   const navigate = useNavigate();
@@ -26,11 +26,11 @@ export function Form() {
     if (!email) {
       setError("Please enter your email.");
       return;
-    }else if (!emailRegex.test(email)) {
+    } else if (!emailRegex.test(email)) {
       setError("Please enter a valid email address.");
       return;
     }
-  
+
     if (!password) {
       setError("Please enter your password.");
       return;
@@ -42,8 +42,8 @@ export function Form() {
     handleSubmitForm(email, password)
       .then((response) => {
         console.log(response);
-        setItem('token', response.data.accessToken);
-        setItem('userId', response.data.user.id)
+        setItem("token", response.data.accessToken);
+        setItem("userId", response.data.user.id);
         const userDataRole = response.data.user.role;
 
         if (userDataRole === "admin") {
@@ -51,7 +51,7 @@ export function Form() {
         } else if (userDataRole === "waiter") {
           navigate("/new-order");
         } else if (userDataRole === "kitchen") {
-          navigate("/kitchen")
+          navigate("/kitchen");
         }
       })
       .catch((error) => {
