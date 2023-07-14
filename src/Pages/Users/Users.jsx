@@ -41,13 +41,13 @@ export function Users() {
       toast.error("Please, insert an email!");
       throw new Error("Please, insert an email!");
     } else if (!emailRegex.test(email)) {
-      toast.error("Please enter a valid email address.");
-      throw new Error("Please enter a valid email address.");
+      toast.error("Please, enter a valid email address.");
+      throw new Error("Please, enter a valid email address.");
     }
 
     if (!password) {
-      toast.error("Please enter a password.");
-      throw new Error("Please enter a password.");
+      toast.error("Please, enter a password.");
+      throw new Error("Please, enter a password.");
     } else if (password.length < 6) {
       toast.error("Password should have at least 6 characters.");
       throw new Error("Password should have at least 6 characters.");
@@ -55,10 +55,16 @@ export function Users() {
 
     //talvez precise de return boolean
     if (role === "") {
-      toast.error("Please select a role.");
-      throw new Error("Please select a role.");
+      toast.error("Please, select a role.");
+      throw new Error("Please, select a role.");
     }
   };
+
+  const cleanState = () => {
+    setEmail("");
+    setPassword("");
+    setRole("");
+  }
 
   const handleCreateUser = async (e) => {
     e.preventDefault();
@@ -68,9 +74,7 @@ export function Users() {
       const userCreated = await createNewUser(email, password, role);
       if (userCreated.status === 201) {
         toast.success("Employee Added!");
-        setEmail("");
-        setPassword("");
-        setRole("");
+        cleanState();
         fetchUsers();
       }
     } catch (error) {
@@ -88,6 +92,7 @@ export function Users() {
 
   const closeEditModal = () => {
     setIsEditModalOpen(false);
+    cleanState();
   };
 
   const openDeleteModal = (user) => {
@@ -97,6 +102,7 @@ export function Users() {
 
   const closeDeleteModal = () => {
     setIsDeleteModalOpen(false);
+    cleanState();
   };
 
   const handleEdit = async (

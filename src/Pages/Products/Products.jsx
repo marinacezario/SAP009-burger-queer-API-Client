@@ -26,7 +26,7 @@ export function Products() {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [listProducts]);
 
   const fetchProducts = () => {
     getProducts()
@@ -40,24 +40,32 @@ export function Products() {
   };
 
   const createProductConfirmation = () => {
+    const numberRegex = /^\d+(\.\d{1,2})?$/
+
     if (name === "") {
       toast.error("Please, insert a name for the product!");
       throw new Error("Please, insert a name for the product!");
     }
 
     if (price === "") {
-      toast.error("Please enter a price.");
-      throw new Error("Please enter a price.");
-    } else if (isNaN(parseFloat(price))) {
-      toast.error("Please enter a valid price.");
-      throw new Error("Please enter a valid price.");
+      toast.error("Please, enter a price.");
+      throw new Error("Please, enter a price.");
+    } else if (!numberRegex.test(price)) {
+      toast.error("Please, enter only numbers.");
+      throw new Error("Please, enter only numbers.");
     }
 
     if (type === "") {
-      toast.error("Please select a type.");
-      throw new Error("Please select a type.");
+      toast.error("Please, select a type.");
+      throw new Error("Please, select a type.");
     }
   };
+
+  const cleanState = () => {
+    setName("");
+    setPrice("");
+    setType("");
+  }
 
   const handleCreateProduct = async (e) => {
     e.preventDefault();
@@ -67,9 +75,7 @@ export function Products() {
       const productCreated = await createNewProducts(name, price, type);
       if (productCreated.status === 201) {
         toast.success("Product Added!");
-        setName("");
-        setPrice("");
-        setType("");
+        cleanState();
         fetchProducts();
       }
     } catch (error) {
@@ -79,14 +85,15 @@ export function Products() {
 
   const openEditModal = (product) => {
     setselectedProduct(product);
-    setName(product.email);
-    setPrice(product.password);
-    setType(product.role);
+    setName(product.name);
+    setPrice(product.price);
+    setType(product.type);
     setIsEditModalOpen(true);
   };
 
   const closeEditModal = () => {
     setIsEditModalOpen(false);
+    cleanState();
   };
 
   const openDeleteModal = (product) => {
@@ -96,6 +103,7 @@ export function Products() {
 
   const closeDeleteModal = () => {
     setIsDeleteModalOpen(false);
+    cleanState();
   };
 
   const handleEdit = async (
