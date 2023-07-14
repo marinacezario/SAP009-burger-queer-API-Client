@@ -144,28 +144,28 @@ export function Users() {
   return (
     <>
       <Header showButton />
-        <RenderItems
-          sectionTitle="EMPLOYEES"
-          listToBeRendered={listUsers.map((user) => (
-            <li key={user.id}>
-              <AdminItem
-                user
-                userEmail={user.email}
-                userRole={user.role}
-                handleEdit={() => openEditModal(user)}
-                handleDelete={() => openDeleteModal(user)}
-              />
-            </li>
-          ))}
-          user
-          email={email}
-          password={password}
-          role={role}
-          onInputChange={(event) => setEmail(event.target.value)}
-          onPasswordChange={(event) => setPassword(event.target.value)}
-          onSelectChange={(option) => setRole(option.target.value)}
-          handleCreateItem={(e) => handleCreateUser(e)}
-        />
+      <RenderItems
+        sectionTitle="EMPLOYEES"
+        listToBeRendered={listUsers.map((user) => (
+          <li key={user.id}>
+            <AdminItem
+              user
+              userEmail={user.email}
+              userRole={user.role}
+              handleEdit={() => openEditModal(user)}
+              handleDelete={() => openDeleteModal(user)}
+            />
+          </li>
+        ))}
+        user
+        email={email}
+        password={password}
+        role={role}
+        onInputChange={(event) => setEmail(event.target.value)}
+        onPasswordChange={(event) => setPassword(event.target.value)}
+        onSelectChange={(option) => setRole(option.target.value)}
+        handleCreateItem={(e) => handleCreateUser(e)}
+      />
       <Modal
         modalTitle="EDIT EMPLOYEE"
         isOpen={isEditModalOpen}
@@ -191,9 +191,10 @@ export function Users() {
               data-testid="password-input"
               className={styles.inputs}
             />
-            <div>
+            <div className={styles.select_area}>
               <label>Role:</label>
               <select
+                className={styles.select}
                 name="select-role"
                 id="select-role"
                 value={selectedUser.role}
@@ -209,7 +210,7 @@ export function Users() {
         }
         handleSaveBtn={(e) =>
           handleEdit(e, selectedUser.id, email, password, role)
-        }Breakfast
+        } Breakfast
       />
 
       <Modal
@@ -217,7 +218,10 @@ export function Users() {
         isOpen={isDeleteModalOpen}
         closeModal={closeDeleteModal}
         deleteMode
-        deleteFields={<>{selectedUser.email}</>}
+        deleteFields={
+          <p className={styles.delete_email}>
+            {selectedUser.email}
+          </p>}
         handleConfirmDeteleBtn={(e) => handleDelete(e, selectedUser.id)}
       />
     </>
