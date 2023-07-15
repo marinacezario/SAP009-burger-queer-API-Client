@@ -52,7 +52,7 @@ Fifth project developed in Laboratoria's Web Development Bootcamp. The project B
       - [7.4 Iterative Design and Enhancements](#7.4-iterative-design-and-enhancements)
 
 
-  ## 1. About the project
+## 1. About the project
 
 
 This project consists in an user interface developed in React, aiming to offer a complete solution to `Burger Queer` restaurant management.
