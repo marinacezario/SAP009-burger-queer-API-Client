@@ -52,7 +52,7 @@ Fifth project developed in Laboratoria's Web Development Bootcamp. The project B
       - [7.4 Iterative Design and Enhancements](#7.4-iterative-design-and-enhancements)
 
 
-  ## 1. About the project
+## 1. About the project
 
 
 This project consists in an user interface developed in React, aiming to offer a complete solution to `Burger Queer` restaurant management.
@@ -90,13 +90,13 @@ New users can't register themselves, this happens because the responsability of 
 
 In case you are interested in testing the application, you can login using one of the credentials below:
 
-email: waiter@bq.com   | senha:  123456
+email: waiter@bq.com   | password:  123456
  <br>
   <br>
-email: kitchen@bq.com   | senha:  123456
+email: kitchen@bq.com   | password:  123456
  <br>
   <br>
-email: admin@bq.com   | senha:  123456
+email: admin@bq.com   | password:  123456
 
 This accounts are for testing purposes and have restricted permissions, according to pre-established roles.
 ***
@@ -174,3 +174,4 @@ Once the usability tests were completed and user feedback was collected, feedbac
 User feedback served as a valuable resource for iterative design and continuous improvement. We iteratively refined the application based on the feedback received, making necessary adjustments to enhance the user experience, usability, and overall satisfaction.
 ***
 
+We value user feedback and actively encourage the community to contribute their suggestions and ideas. If you have any feedback, bug reports, or feature requests, please feel free to submit them through [GitHub Pull Requests]([https://github.com/your-project-repo/issues](https://github.com/silversantos/burger-queer-API-Client/pulls)). We appreciate your input and are dedicated to making our application even better based on user needs.
