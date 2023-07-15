@@ -90,13 +90,13 @@ New users can't register themselves, this happens because the responsability of 
 
 In case you are interested in testing the application, you can login using one of the credentials below:
 
-email: waiter@bq.com   | senha:  123456
+email: waiter@bq.com   | password:  123456
  <br>
   <br>
-email: kitchen@bq.com   | senha:  123456
+email: kitchen@bq.com   | password:  123456
  <br>
   <br>
-email: admin@bq.com   | senha:  123456
+email: admin@bq.com   | password:  123456
 
 This accounts are for testing purposes and have restricted permissions, according to pre-established roles.
 ***
