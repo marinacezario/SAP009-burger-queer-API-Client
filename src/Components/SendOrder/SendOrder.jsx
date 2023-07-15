@@ -15,9 +15,10 @@ export function SendOrder({
   renderSelectedProducts,
   renderOrderTotal,
   orderResume,
-}) {
+  }) {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+
 
   const handleSendOrder = async (e) => {
     e.preventDefault();
@@ -39,6 +40,7 @@ export function SendOrder({
       const orderSent = await createNewOrder(orderResume, clientName, waiterId);
 
       if (orderSent.status === 201) {
+        
         toast.success("Sent to kitchen!");
         navigate("/current-orders");
       }
