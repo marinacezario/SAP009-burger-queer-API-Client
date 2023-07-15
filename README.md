@@ -23,12 +23,12 @@ Fifth project developed in Laboratoria's Web Development Bootcamp. The project B
 
   Developed by <br>
   <br>
-    Silver Santos<br>
-  [Linkedin](https://www.linkedin.com/in/silver-santos/) | [Github](https://github.com/silversantos/)
-  <br>
-  <br>
   Marina Cezário <br>
   [Linkedin](https://www.linkedin.com/in/marina-cezario/) | [Github](https://github.com/marinacezario) 
+  <br>
+  <br>
+    Silver Santos<br>
+  [Linkedin](https://www.linkedin.com/in/silver-santos/) | [Github](https://github.com/silversantos/)
   <br>
   <br>
  
@@ -174,4 +174,4 @@ Once the usability tests were completed and user feedback was collected, feedbac
 User feedback served as a valuable resource for iterative design and continuous improvement. We iteratively refined the application based on the feedback received, making necessary adjustments to enhance the user experience, usability, and overall satisfaction.
 ***
 
-We value user feedback and actively encourage the community to contribute their suggestions and ideas. If you have any feedback, bug reports, or feature requests, please feel free to submit them through [GitHub Pull Requests]([https://github.com/your-project-repo/issues](https://github.com/silversantos/burger-queer-API-Client/pulls)). We appreciate your input and are dedicated to making our application even better based on user needs.
+We value user feedback and actively encourage the community to contribute their suggestions and ideas. If you have any feedback, bug reports, or feature requests, please feel free to submit them through [GitHub Pull Requests](https://github.com/marinacezario/SAP009-burger-queer-API-Client/pulls). We appreciate your input and are dedicated to making our application even better based on user needs.
