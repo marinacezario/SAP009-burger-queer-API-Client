@@ -13,12 +13,12 @@ export function RenderOrders({
   showButton,
   titleBtn,
   changeStatusTo,
+
 }) {
   const [pendingOrders, setPendingOrder] = useState([]);
   const [preparing, setPreparing] = useState([]);
   const [readyOrders, setReadyOrders] = useState([]);
-  const [preparationTimes, setPreparationTimes] = useState({});
-
+  
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -31,9 +31,8 @@ export function RenderOrders({
     getOrders()
       .then((response) => {
         const ordersData = response.data;
-
+        
         ordersData.sort((a, b) => new Date(a.dateEntry) - new Date(b.dateEntry));
-
         const pending = ordersData.filter(
           (order) => order.status === "pending"
         );
@@ -42,7 +41,7 @@ export function RenderOrders({
         );
         const ready = ordersData.filter(
           (order) => order.status === "ready"
-        );
+        );     
         setPendingOrder(pending);
         setPreparing(preparing);
         setReadyOrders(ready);
@@ -57,22 +56,11 @@ export function RenderOrders({
       const statusUpdated = await updateStatus(orderId, changeStatus);
 
       if (statusUpdated.status === 200) {
+
         if (changeStatus === "preparing") {
           toast.success("Preparing...");
         } else if (changeStatus === "ready") {
-          const now = new Date();
-          const entryTime = new Date(
-            pendingOrders.find((order) => order.id === orderId).dateEntry
-          );
-          const preparationTime = Math.floor(
-            (now - entryTime) / (1000 * 60) 
-          );
-  
-          setPreparationTimes((prevTimes) => ({
-            ...prevTimes,
-            [orderId]: preparationTime,
-          }));
-          toast.success("Sent to waiter!");
+          toast.success("Sent to waiter!");     
         } else if (changeStatus === "delivered") {
           toast.success("Order delivered!");
         }
@@ -108,7 +96,6 @@ export function RenderOrders({
               onStatusChange={() =>
                 handleStatusChange(order.id, { changeStatusTo })
               }
-              preparationTime={preparationTimes[order.id]} 
             />
           ))}
         {stateToBeRendered === "preparing" &&
@@ -131,7 +118,6 @@ export function RenderOrders({
               onStatusChange={() =>
                 handleStatusChange(order.id, { changeStatusTo })
               }
-              preparationTime={preparationTimes[order.id]} 
             />
           ))}
         {stateToBeRendered === "ready" &&
@@ -154,7 +140,6 @@ export function RenderOrders({
               onStatusChange={() =>
                 handleStatusChange(order.id, { changeStatusTo })
               }
-              preparationTime={preparationTimes[order.id]} 
             />
           ))}
       </div>

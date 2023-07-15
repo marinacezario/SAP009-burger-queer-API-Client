@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import React from "react";
 
 import { Header } from "../../Components/Header/Header";
 
@@ -7,17 +6,7 @@ import styles from "./Kitchen.module.css";
 import { RenderOrders } from "../../Components/RenderOrders/RenderOrders";
 
 export function Kitchen() {
-
-  const [preparationTimes] = useState({});
-
-  useEffect(() => {
-    for (const orderId in preparationTimes) {
-      const preparationTime = preparationTimes[orderId];
-      toast.info(`Preparation time for order ${orderId}: ${preparationTime} minutes`);
-    }
-  }, [preparationTimes]);
   
-
   return (
     <>
       <Header />
