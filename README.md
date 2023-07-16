@@ -103,27 +103,23 @@ This accounts are for testing purposes and have restricted permissions, accordin
 
 ## 4. Technical Considerations
 
-This project was developed utilizing a series of modern and widely adopted technologies for web application development. Some of the key technologies, tools, and platforms utilized in this project include:
+This project was developed utilizing a range of modern and widely adopted technologies, tools, and services for web application development. Here are some additional details about the technologies used:
 
-- JavaScript React framework: The project was built using the JavaScript React framework, which offers an efficient and reactive approach to developing interactive and dynamic user interfaces. It allows for the creation of reusable components and provides a robust ecosystem for building modern web applications.
+JavaScript React framework: The project was built using the JavaScript React framework, which offers an efficient and reactive approach to developing interactive and dynamic user interfaces. It provides powerful tools for component-based development, state management, and routing with the help of the react-router-dom library.
 
-- Toastify: Toastify was used for displaying informative and user-friendly notifications in the application. It provides a simple and customizable way to show success, error, and other types of notifications to enhance the user experience.
+Componentization: The application follows a component-based architecture, leveraging the benefits of reusable and modular components. This approach promotes code reusability, maintainability, and scalability.
 
-- React Modal: React Modal was utilized for creating and managing modal windows in the application. It allows for the display of content or forms in a layered dialog, providing a clean and intuitive user interface for specific interactions.
+Module.css: To style the components, the project uses the CSS Modules approach. This allows for scoped and modular CSS styles, preventing class name collisions and providing a more organized styling structure.
 
-- Axios: Axios, a popular JavaScript library, was employed for making HTTP requests from the application to the API endpoints. It provides an easy-to-use interface for handling asynchronous API calls, enabling efficient data retrieval and manipulation.
+Vite and Vercel: The project utilizes Vite as the build tool and development server, which offers fast and optimized builds. For deployment, Vercel is used as the hosting platform, ensuring easy deployment and scalability.
 
-- Jest and Testing Library: Jest and Testing Library were used for implementing unit tests and integration tests for the project. These testing frameworks allow for the creation of robust and reliable tests to ensure the correctness and stability of the application.
+Insomnia: The Insomnia app was utilized for testing HTTP requests. It facilitated the testing and simulation of API requests, allowing for the customization of requests and visualization of responses.
 
-- ESLint: ESLint was utilized as a static code analysis tool to enforce consistent coding styles and detect potential errors or code quality issues. It helps maintain code readability and ensures adherence to best practices throughout the development process.
+Figma: Figma was used for prototyping and designing the user interface of the application. It provided a collaborative environment for creating interactive prototypes, enabling effective communication and visualization of the application's design.
 
-- Insomnia: Insomnia app was utilized for testing and simulating HTTP requests to the API. With Insomnia, custom HTTP requests could be sent, and the received responses could be visualized, ensuring proper communication between the application and the API endpoints.
+Local storage: The project utilizes the browser's local storage for securely storing tokens or other relevant data, ensuring persistent user sessions and seamless authentication across page reloads.
 
-- Figma: Figma was used for prototyping and designing the user interface of the application. It provides a collaborative platform for creating interactive and visually appealing designs, allowing for seamless communication and iteration in the design process.
-
-Other tools and libraries: In addition to the aforementioned technologies, various other tools and libraries were employed, including package managers for dependency management, version control systems for collaborative development, and helper libraries for efficient project construction.
-
-The combination of these technologies, tools, and platforms enabled the development of a modern, responsive, and functional user interface for efficient order management in a restaurant environment.
+The combination of these technologies, tools, and services contributed to the development of a modern, efficient, and user-friendly web application, empowering efficient order management in a restaurant environment.
 ***
 
 ## 5. API Mock
