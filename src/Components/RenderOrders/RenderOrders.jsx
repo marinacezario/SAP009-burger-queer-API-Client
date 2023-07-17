@@ -58,6 +58,7 @@ export function RenderOrders({
       if (statusUpdated.status === 200) {
 
         if (changeStatus === "preparing") {
+          console.log("inside if preparing")
           toast.success("Preparing...");
         } else if (changeStatus === "ready") {
           toast.success("Sent to waiter!");     
@@ -94,7 +95,7 @@ export function RenderOrders({
               showButton={showButton}
               titleBtn={titleBtn}
               onStatusChange={() =>
-                handleStatusChange(order.id, { changeStatusTo })
+                handleStatusChange(order.id, changeStatusTo)
               }
             />
           ))}
@@ -116,7 +117,7 @@ export function RenderOrders({
               showButton={showButton}
               titleBtn={titleBtn}
               onStatusChange={() =>
-                handleStatusChange(order.id, { changeStatusTo })
+                handleStatusChange(order.id, changeStatusTo)
               }
             />
           ))}
@@ -138,7 +139,7 @@ export function RenderOrders({
               showButton={showButton}
               titleBtn={titleBtn}
               onStatusChange={() =>
-                handleStatusChange(order.id, { changeStatusTo })
+                handleStatusChange(order.id, changeStatusTo)
               }
             />
           ))}
